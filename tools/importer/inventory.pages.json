@@ -1,0 +1,476 @@
+{
+  "templates": [
+    {
+      "name": "'Portfolio Showcase'",
+      "cluster": 1,
+      "pages": [
+        {
+          "url": "https://library.westernsydney.edu.au/students/disability_services",
+          "uuid": "02076c4fba6ce041f3d4b775236c91a281c58eb2"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/collections/beyond_our_collections",
+          "uuid": "76a7a3f9f83d658c4464dbebd739fc9ce2e1ecd2"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/students/referencing-citation",
+          "uuid": "69cd9e2eea2e73f759dc0ed74f1bbd62a26e526f"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us",
+          "uuid": "b41d6ec214173801a5699ec8e9d0cd51c5eac412"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers",
+          "uuid": "4e6f41ffaf6ebf513a84b1e9a26cd26a0bf945ab"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/collections",
+          "uuid": "d04995a5f6015c46f1a2703815469ed3fdbb95ed"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/rules_policies",
+          "uuid": "5be4ffd36f651cf57f0d073227fd94891cb3f87b"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/students",
+          "uuid": "7aa7f6a2a258cda45126d66ed40a0b2f9e61dd1e"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/students/referencing-citation/citation_tools",
+          "uuid": "34c1dd46b23c808f2eebdd2ecce8cf1ea8332b06"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus",
+          "uuid": "14b7df1cb4671e756ec9ac32538f044343275416"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/students/offshore_students",
+          "uuid": "4150a83cd58f4c1ad58f4ce4ab1d499235bf89cd"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/teaching",
+          "uuid": "4e3f1383a2b2528b34ff039bb1e5c77729a0c3f4"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/students/distance_students",
+          "uuid": "c5fe4f39c02fb185281c48798d7a993f674a8462"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/contact_us",
+          "uuid": "8ade934ce79558dfd2e6c07c926b7f2ba79f7c11"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/using_the_library/study_spaces",
+          "uuid": "a9819ec332976b4823f0bedc7bb81aa87f4a589e"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/rules_policies/copyright",
+          "uuid": "acccc0511a8ce8b6f73fa01c07fabee05d12452f"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/using_the_library/printing",
+          "uuid": "aa0a46fc998c6f747f201af4368478f0790edc5c"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/teaching/managing_readings_lists",
+          "uuid": "263e06028dab4af2da54ba94534aa6291a37348f"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/alumni",
+          "uuid": "ad39353a2c4ee9cf8e9f216e7bfa86d337dd1e23"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/rules_policies/library_rules",
+          "uuid": "63dfa029295c0fee3f61e9e7075337115ddea05b"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/using_the_library/WSU_Community_hours",
+          "uuid": "5eb39c36cacbfcf14efa4bf08e7a7d67768e66c6"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/rules_policies/code_of_conduct",
+          "uuid": "d793acec620e7fe97cf57428c5c87f1f2dc87856"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/students/study-breaks",
+          "uuid": "d03db9f48632999c0c09cc711a2824398f605a70"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/students/exam_papers",
+          "uuid": "bd98b8c433bccc5d3f4f5713fc6ce1a8bde38b36"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/students/subject_essentials/subject_outlines",
+          "uuid": "643f6c8c58d5b085e137417c70aedea1ea4020d7"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/students/subject_essentials",
+          "uuid": "030cfe54b64839c7bbab7d9ff76631dce5a4c94d"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/teaching/linking_to_library_resources",
+          "uuid": "491a3a975dacfc39b07e83f362ce9843fd74ac59"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/collections/collection_suggestions",
+          "uuid": "e2009be6ab5f8b32372466b14cbe061a08f22ca4"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/collections/e-resources",
+          "uuid": "8d34129c5b95a03d6f4e222863ac8e17131a6bba"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/teaching/academic_and_information_literacy",
+          "uuid": "6f5f9fdd48b1d98b1470d3d442e24ac174fb006c"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/news/current/academic_integrity_week_2022",
+          "uuid": "a9d2cd009c517d2950b3de1b02d4341cd73be338"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/information/literacy_support",
+          "uuid": "01260b61fcf776ee07d7f743d3aef865b0a5a406"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/community/engage/outreach_librarians",
+          "uuid": "93092d64a871d6c1351173568e3c8be67c2555d2"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/scholarly-publishing/publishing_and_strategy",
+          "uuid": "c1f7696f0003f345523245fb8863da10d9eaa170"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/scholarly-publishing/impact_and_promotion",
+          "uuid": "cea5c28d18250c659e75d0ff206b011faea736b8"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/implementation_instruction/lorem_ipsum",
+          "uuid": "113e13c5d64f39c2d80c6b33abffe65b8d6574b3"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/news/news_archive/library_tours_week_1_spring_session",
+          "uuid": "052ce20edffdd8ab26fc94680b0460eee7b7f5a7"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/news/current/study_smarter,_not_harder",
+          "uuid": "c510283310758220dcdcad47a04f2bf1563da12f"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/study_smart",
+          "uuid": "aacdb1ab1af893eab835bb86ae0fb39720073c71"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/community/engage",
+          "uuid": "9c1e65c0ef4b1c8ae103e00cd2a12be17764dc37"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/academic-integrity",
+          "uuid": "349d5cbe9844bd683d2cf7181651581826dd192e"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/scholarly-publishing/open_access_publishing",
+          "uuid": "49481128f0da40e81538dfedc37a26dee40df49a"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/scholarly-publishing/open_scholarship",
+          "uuid": "6db913c9f73854c7f35705d81a27e6c9ba51e1fa"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/study",
+          "uuid": "5d7285ac34e07a7af5a7ad752154f14004107ef0"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/news/news_archive/open_day_library_tours_at_parramatta_south_campus",
+          "uuid": "13d6653a4ec1d6c4d992178ce56af03743c90a14"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/news/news_archive/dignitea_morning_tea",
+          "uuid": "d19befdb9daa9967726d9aeddad6cc8325bf58eb"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/news/current/adopt,_adapt_or_create_an_open_textbook",
+          "uuid": "c20c4a245501c0feba74b95d9cabda5197b5279d"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/news/current/wear_it_purple_day_event_26_august",
+          "uuid": "a11e6ce18fedfcb4e734f54f194409b761739e14"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/news/current/whitlam_the_making_of_a_prime_minister",
+          "uuid": "6f273688e75ec93651a1b98118e25c4ea60fa5bb"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/news/news_archive/21c_festival_of_action",
+          "uuid": "d4e41f4ce4d3725b29e47c0534ade5fa9345cded"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/news/current/access_to_australian_standards_is_changing",
+          "uuid": "52575c2b8769afd32e6092e8e083eaa42af2e6b5"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/study-skills",
+          "uuid": "d9403bd5b549417d1a3512913ebba671c3fc6358"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/page-not-found",
+          "uuid": "0a8e28ebd1b5a423ef9baa556db4d12c817d618b"
+        }
+      ]
+    },
+    {
+      "name": "'Real Estate Listing Template'",
+      "cluster": 2,
+      "pages": [
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations",
+          "uuid": "43422d5791493ac57dab6bacd47dfbf09439e7b2"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/nirimba",
+          "uuid": "89ce437d3c7f4dee8e3f166824eaadd791f054ee"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/online_librarian",
+          "uuid": "dc15ab3a2a219602a1e3f73073f9f1c648cbb8fb"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/hawkesbury",
+          "uuid": "245b75b39aaafc350374f589a34bf637f87cd009"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/liverpool",
+          "uuid": "f37ca4e199eebaef3e48239df281d2040945e46f"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/parramatta_city",
+          "uuid": "baf84ed0f187ee14abd8924619f8c096836e1961"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/campbelltown",
+          "uuid": "9b8a2c7b0679afa98c3505c663c1bcb3b2c2d14b"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/penrith",
+          "uuid": "b31ab19829578e9bec53e9e08419fddff862f404"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/parramatta_south",
+          "uuid": "fc0098b33676065d18ef908693b6e8b8167ba4df"
+        }
+      ]
+    },
+    {
+      "name": "Dashboard Template",
+      "cluster": 3,
+      "pages": [
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/conducting-research/types_of_research",
+          "uuid": "7694e1c630375aeb2a7e080fbd2536c237f0db94"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
+          "uuid": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/conducting-research/evaluating_sources",
+          "uuid": "60fade9a7d480b917ba552ee20e95e6a9a729ac8"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/systematic_reviews",
+          "uuid": "29d08a4aa935764578fb54627dac5a05c0df77ed"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/request_doi_or_isbn",
+          "uuid": "2660a38ef162caf4d074717ace8d81331774409f"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/submit-publication",
+          "uuid": "80d91d0af6cf55d86186a489d3a5241b1bd1dca1"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/conducting-research/sourcing_research_data",
+          "uuid": "540ab15581a647931484ebad9dd79ca439106571"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/submit-publication/research_publications",
+          "uuid": "d6806a490ab7c40e15eae2422260ade53431752b"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/data-management/research_funder_and_publisher_requirements",
+          "uuid": "8657c236b08b00199c7e04b1a4d4824af0008311"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/develop_publishing_plan/keeping_current",
+          "uuid": "08e587429c319ff4cda3d6e4c8bffe31517c1f2f"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/submit-publication/rpr_guidelines",
+          "uuid": "4605b0c218b4dbdd07cb7202c42d134d42867dd9"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/conducting-research/locating_theses",
+          "uuid": "0da2ca9321dde77384c74343185272cfea15a024"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/data-management",
+          "uuid": "ab8db0fac5b5b1caf755a68bda4dccf1fbb6eb28"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/conducting-research/literature_reviews",
+          "uuid": "2a86527101886481adca4ea50b620e809a6479b6"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/conducting-research",
+          "uuid": "4fdff302f874c38178ac3dc73b6ac8bcdf922e2d"
+        }
+      ]
+    },
+    {
+      "name": "'Dashboard Template'",
+      "cluster": 4,
+      "pages": [
+        {
+          "url": "https://library.westernsydney.edu.au/students/academic_integrity/turnitin_student_support",
+          "uuid": "5de73602dfcad317b144013e2b01ba86bb2a0242"
+        }
+      ]
+    },
+    {
+      "name": "'Dashboard Interface'",
+      "cluster": 5,
+      "pages": [
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/evaluating-success/metrics/journal_quality_indicators",
+          "uuid": "fe5628ad8e3272fc9d16b80f68e9d02ff3ac4cc2"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/evaluating-success/metrics/book_quality",
+          "uuid": "9792af3dda4a17e104c37345b762d0aa93a609a8"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/evaluating-success/metrics/responsible_metrics",
+          "uuid": "612715538848b47a28607135bab8deb12a9f05f6"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/evaluating-success/metrics/altmetrics",
+          "uuid": "efe47c0d87ea966dd07cc164ac627e52a0fed682"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/evaluating-success/metrics/author_profiles",
+          "uuid": "6467fb8af9636738b07fc7f75e9b26adaed64af9"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/evaluating-success/metrics/article-level",
+          "uuid": "ab5619b2cda60e11dfee01bdc09377296000d0e2"
+        }
+      ]
+    },
+    {
+      "name": "Dashboard Template",
+      "cluster": 6,
+      "pages": [
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/evaluating-success/impact/measuring_impact",
+          "uuid": "774f9a8c2805e0ad515f4ae21e3a5ba90a9e7263"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/evaluating-success/metrics",
+          "uuid": "8399b69a961e702b9ae3ff1ce388c593787bb2fb"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/evaluating-success/impact/communicating_impact",
+          "uuid": "a149ab9a7ac3f83a55d0cb16861fd1977fcd2dd2"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/evaluating-success/impact/impact_performance",
+          "uuid": "442f2aeb6080d079a8e9a587140a238cc3cadeed"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/evaluating-success/impact",
+          "uuid": "f966c264fdc005827e8103ad37e291824388cbb9"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/evaluating-success/impact/impact_planning",
+          "uuid": "1de77f2122902e452645b4fb9c219624a4d269f8"
+        }
+      ]
+    },
+    {
+      "name": "'Dashboard Template'",
+      "cluster": 7,
+      "pages": [
+        {
+          "url": "https://library.westernsydney.edu.au/library_hours",
+          "uuid": "e53cb3757a502f18403d09f3a5461d3ae8ea3dd0"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/home",
+          "uuid": "3eb45cc1b1f7b1173bae665b6732cc8667538b5a"
+        }
+      ]
+    },
+    {
+      "name": "'Directory Listing Page'",
+      "cluster": 8,
+      "pages": [
+        {
+          "url": "https://library.westernsydney.edu.au/",
+          "uuid": "b61d3d495f54b270e3d91b149cf2e8b6b7da6f2a"
+        }
+      ]
+    },
+    {
+      "name": "'Dashboard Interface'",
+      "cluster": 9,
+      "pages": [
+        {
+          "url": "https://library.westernsydney.edu.au/collections/indigenous_resources/dharawal_pharmacopeia",
+          "uuid": "3804b9787c416e760d645359dd64a4db7d95344f"
+        }
+      ]
+    },
+    {
+      "name": "'Dashboard Template'",
+      "cluster": 10,
+      "pages": [
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/membership/blocks_charges_holds",
+          "uuid": "7c969a3ca373206be26ffe48821b9fbbf841180a"
+        }
+      ]
+    },
+    {
+      "name": "'Dashboard Template'",
+      "cluster": 11,
+      "pages": [
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/openaccessfeesupport/read_and_publish",
+          "uuid": "955ff18f745030fa77dbf9cdf08ef95ca0f4c990"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/openaccessfeesupport/open_access_article_processing",
+          "uuid": "922b948f7e41ec42d6ea7c49a56e5646282649fa"
+        }
+      ]
+    },
+    {
+      "name": "Dashboard Template",
+      "cluster": 12,
+      "pages": [
+        {
+          "url": "https://library.westernsydney.edu.au/students/study_smart_skills/assignment_calculator",
+          "uuid": "040f43bea17e0f0fcd03410b9d78b1405c0007b8"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/archived_content/2023_web_presence_update/study-skills/online_tutorials",
+          "uuid": "27ed49efe4515137a48c9ed19f5af531aa10d315"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/students/study_smart_skills/study_smart_librarians",
+          "uuid": "4101a49b71e4cdaa95240523efb4b46a3e1ef415"
+        }
+      ]
+    }
+  ]
+}
