@@ -1,6 +1,5 @@
 {
   "originUrl": "https://library.westernsydney.edu.au",
-  "aborted": false,
   "lastCrawled": "https://library.westernsydney.edu.au/",
   "urls": [
     {
@@ -499,7 +498,8 @@
       "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
       "source": "SITEMAPS",
       "targetPath": "/researchers/western-open-books",
-      "id": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548"
+      "id": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
+      "status": "EXCLUDED"
     },
     {
       "url": "https://library.westernsydney.edu.au/students",
@@ -604,6 +604,7 @@
       "id": "263e06028dab4af2da54ba94534aa6291a37348f"
     }
   ],
+  "extractionErrors": [],
   "crawlOptions": {
     "timeout": 64800000,
     "inclusionPatterns": [],
@@ -616,8 +617,5 @@
     "strategiesAttempted": [
       "SITEMAPS"
     ]
-  },
-  "extractionErrors": [],
-  "errorCountMessage": "none",
-  "error": null
+  }
 }
