@@ -1,0 +1,160 @@
+{
+  "fragments": [
+    {
+      "name": "nav",
+      "path": "/nav",
+      "totalBoxes": 1,
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/students/referencing-citation",
+          "urlHash": "69cd9e2eea2e73f759dc0ed74f1bbd62a26e526f",
+          "uuid": "69cd9e2e-00-cf00d50ba65a8f84d89557701ea89efb04cdef81",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]/div[1]"
+        }
+      ],
+      "styles": {
+        "height": 41
+      }
+    },
+    {
+      "name": "footer",
+      "path": "/footer",
+      "totalBoxes": 1,
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/students/referencing-citation",
+          "urlHash": "69cd9e2eea2e73f759dc0ed74f1bbd62a26e526f",
+          "uuid": "69cd9e2e-04-b336659d6a58b751a90a6f511c6b5bdd1f7d3464",
+          "xpath": "/html[1]/body[1]/div[4]"
+        }
+      ],
+      "styles": {
+        "background": "rgb(249, 249, 249) none repeat scroll 0% 0% / auto padding-box border-box"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "name": "header",
+      "cluster": 1,
+      "source": "Header",
+      "target": "Header (header1)",
+      "key": "header1",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/students/referencing-citation",
+          "urlHash": "69cd9e2eea2e73f759dc0ed74f1bbd62a26e526f",
+          "uuid": "69cd9e2e-00-cf00d50ba65a8f84d89557701ea89efb04cdef81",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 2,
+      "source": "Columns block",
+      "target": "Columns block (columns2)",
+      "key": "columns2",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/students/referencing-citation",
+          "urlHash": "69cd9e2eea2e73f759dc0ed74f1bbd62a26e526f",
+          "uuid": "69cd9e2e-01-fddb26164dfb1d479320168e4dc58c4a86ac17b2",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 3,
+      "source": "Accordion",
+      "target": "Accordion (accordion3)",
+      "key": "accordion3",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/students/referencing-citation",
+          "urlHash": "69cd9e2eea2e73f759dc0ed74f1bbd62a26e526f",
+          "uuid": "69cd9e2e-02-ee7a6796f533ca1a641266fa982b337f0ba6fbf3",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 4,
+      "source": "Columns block",
+      "target": "Columns block (columns4)",
+      "key": "columns4",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/students/referencing-citation",
+          "urlHash": "69cd9e2eea2e73f759dc0ed74f1bbd62a26e526f",
+          "uuid": "69cd9e2e-03-eeada7e2c794e3effab80f5211be7031543b87b1",
+          "xpath": "/html[1]/body[1]/div[2]/footer[1]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Tabs",
+      "cluster": 5,
+      "source": "Tabs",
+      "target": "Tabs (tabs5)",
+      "key": "tabs5",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/students/referencing-citation",
+          "urlHash": "69cd9e2eea2e73f759dc0ed74f1bbd62a26e526f",
+          "uuid": "69cd9e2e-04-b336659d6a58b751a90a6f511c6b5bdd1f7d3464",
+          "xpath": "/html[1]/body[1]/div[4]",
+          "section": "section-2"
+        }
+      ]
+    }
+  ],
+  "outliers": [],
+  "pages": [
+    {
+      "url": "https://library.westernsydney.edu.au/students/referencing-citation",
+      "differences": [
+        {
+          "change_type": "insertion",
+          "text": "Library Search icon Find books, journals, databases and more... Search [x] Search Library Collections [ ] Search Library Website About Us Open sub nav Membership & Borrowing Campus Libraries Using the Library Alumni FAQs Contact Us Rules & Policies What's On News Plans & Strategies Collections Open sub nav About Our Collections e-Resources Research Profiles and Repository Special Collections Indigenous Resources Whitlam Prime Ministerial Collection Document Delivery & External Collections Collection Suggestions OpenAthens Students Open sub nav Study Smart Subject Essentials Academic Integrity Referencing & Citation Exam Papers Distance Students Offshore Students Disability Services Study Breaks Rules & Policies Using the Library Teaching Open sub nav School Librarians Academic & Information Literacy Linking to Library Resources Managing Reading Lists Western Open Books Copyright Guidance Researchers Open sub nav Submit a Research Output Conducting Research Research Data Management Develop a Publishing Plan Open Access Publishing Fee Support Request a DOI or ISBN Western Open Books Systematic Reviews & Covidence Researcher Toolkit Quick Links Open sub nav EndNote & Citation Tools Student Group Study Rooms Study Smart Study Smart Appointments Subject Guides Subject Outlines Library Hours Open sub nav My Library Account Open sub nav "
+        },
+        {
+          "change_type": "equal",
+          "text": "Students Students Study Smart Open sub nav Subject Essentials Open sub nav Subject Outlines Open sub nav Academic Integrity Open sub nav Academic Integrity Module Open sub nav Turnitin Student Support Open sub nav Referencing & Citation Open sub nav EndNote & Citation Tools Open sub nav Exam Papers Open sub nav Distance Students Open sub nav Offshore Students Open sub nav Disability Services Open sub nav Study Breaks Open sub nav Rules & Policies Open sub nav Using the Library Open sub nav Print/Copy Open sub nav Study Spaces Open sub nav Student Group Study Rooms Open sub nav WSU Community hours Open sub nav Referencing & Citation Home Students Referencing & Citation When writing assignments, reports, research papers or theses, you must acknowledge quotations, information and ideas taken from other authors through a bibliography or list of references. The Library has developed guides for the citation styles most commonly used within the University. Use of these guides is supported in the University Referencing advice: Guidelines for staff . Before starting your work, it is important to first consult your Subject Guide, lecturer, or tutor for the preferred citation style for each subject you undertake. APA 7 "
+        },
+        {
+          "change_type": "deletion",
+          "text": "The PDF and I:Cite APA 7 resources have been replaced by the more intuitive APA 7 Referencing Style Guide. Remember to change any Bookmarks or links you have to the new URL. APA 7 Referencing Style Guide "
+        },
+        {
+          "change_type": "equal",
+          "text": "Harvard WesternSydU Harvard WesternSydU Referencing Guide (PDF) Other supporting materials Harvard WesternSydU FAQs Harvard referencing videos I:Cite Harvard WesternSydU MLA 8 MLA 8 Referencing Guide (PDF) Other supporting materials MLA 8 FAQs MLA referencing videos Vancouver Vancouver Referencing Guide (PDF) Other supporting materials Vancouver FAQs Vancouver referencing videos I:Cite Vancouver Chicago 17 Chicago 17 Referencing Guide (PDF) Other supporting materials Chicago 17 FAQs Chicago referencing videos AGLC 4 AGLC 4 Referencing Guide (PDF) Other supporting materials Australian Guide to Legal Citation 4 (Courtesy of Melbourne University Law Review Association) AGLC referencing videos General Citation Guidelines How to Cite Cases These citation style guides are designed to cover the most commonly asked citation and referencing questions. Further support is available . RefQuest : An interactive, monster-fighting game to assist with learning about different referencing styles and when to use them. To assist in managing references and applying citation styles, try one of these tools recommended by the Library. "
+        },
+        {
+          "change_type": "deletion",
+          "text": "Online"
+        },
+        {
+          "change_type": "insertion",
+          "text": "Contact Us: 02 9852 5353 Email Us University Library Locked Bag 1797, Penrith NSW 2751 Follow Us: Twitter Instagram Facebook youtube Connect with the app: Apple"
+        },
+        {
+          "change_type": "equal",
+          "text": " "
+        },
+        {
+          "change_type": "deletion",
+          "text": "Librarian"
+        },
+        {
+          "change_type": "insertion",
+          "text": "App store Google Play store Home About Us Collections Students Teaching Researchers Quick Links Library Hours My Library Account Privacy Policy Sitemap Emergency Contact Library Contact Western Sydney University Copyright \u00a9 2004\u20132022 ABN 53 014 069 881 CRICOS Provider No: 00917K"
+        }
+      ],
+      "similarity_score": 0.8952540621793167
+    }
+  ]
+}
