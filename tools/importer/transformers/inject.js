@@ -11,39 +11,68 @@
  */
 /* eslint-disable no-console */
 (() => {
-    const mainElement = document.querySelector('main.main.left-nav-column, main.main.all-three-column');
-    if (mainElement) {
-      mainElement.style.flexDirection = 'column';
-  
-      // make all direct children span the full width
-      Array.from(mainElement.children).forEach((child) => {
-        child.style.width = '100%';
-      });
-    }
-  
-    // remove slide-out librarian element if present
-    document.getElementById('lcs_slide_out-11923')?.remove();
-  
-    // remove offline chatwidget
-    document.querySelector('[aria-label="Chat Widget"]')?.remove();
-    document.querySelector('.breadcrumb__wrapper')?.remove();
-  
-    // remove left navigation, header, and footer elements if present
-    ['.left-nav', 'header.header', 'footer.footer'].forEach((selector) => {
-      document.querySelectorAll(selector).forEach((el) => el.remove());
-    });
-  
-    const targetTable = document.getElementById('table34264');
-    if (targetTable) {
-      targetTable.classList.add('blu-det-container');
-      console.log('Added blu-det-container class to table34264');
-    }
-  
-    const videoIframes = document.querySelectorAll('iframe[src*="youtube.com/embed"]');
-    videoIframes.forEach((iframe) => {
-      const sectionAncestor = iframe.closest('section');
-      if (sectionAncestor) {
-        sectionAncestor.classList.add('blu-det-container');
+  try {
+    // Main element styling
+    try {
+      const mainElement = document.querySelector('main.main.left-nav-column, main.main.all-three-column');
+      if (mainElement) {
+        mainElement.style.flexDirection = 'column';
+    
+        // make all direct children span the full width
+        Array.from(mainElement.children).forEach((child) => {
+          child.style.width = '100%';
+        });
       }
-    });
-  })();
+    } catch (error) {
+      console.error('Error processing main element:', error);
+    }
+
+    // Remove specific elements
+    try {
+      // remove slide-out librarian element if present
+      document.getElementById('lcs_slide_out-11923')?.remove();
+    
+      // remove offline chatwidget
+      document.querySelector('[aria-label="Chat Widget"]')?.remove();
+      document.querySelector('.breadcrumb__wrapper')?.remove();
+    } catch (error) {
+      console.error('Error removing elements:', error);
+    }
+
+    // Remove navigation, header, and footer elements
+    try {
+      ['.left-nav', 'header.header', 'footer.footer'].forEach((selector) => {
+        document.querySelectorAll(selector).forEach((el) => el.remove());
+      });
+    } catch (error) {
+      console.error('Error removing navigation elements:', error);
+    }
+
+    // Target table processing
+    try {
+      const targetTable = document.getElementById('table34264');
+      if (targetTable) {
+        targetTable.classList.add('blu-det-container');
+        console.log('Added blu-det-container class to table34264');
+      }
+    } catch (error) {
+      console.error('Error processing target table:', error);
+    }
+
+    // Video iframe processing
+    try {
+      const videoIframes = document.querySelectorAll('iframe[src*="youtube.com/embed"]');
+      videoIframes.forEach((iframe) => {
+        const sectionAncestor = iframe.closest('section');
+        if (sectionAncestor) {
+          sectionAncestor.classList.add('blu-det-container');
+        }
+      });
+    } catch (error) {
+      console.error('Error processing video iframes:', error);
+    }
+
+  } catch (error) {
+    console.error('Unexpected error in inject.js:', error);
+  }
+})();
