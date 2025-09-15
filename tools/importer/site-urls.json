@@ -3,10 +3,10 @@
   "aborted": false,
   "urls": [
     {
-      "url": "https://library.westernsydney.edu.au/students/referencing-citation",
+      "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
       "source": "MANUAL",
-      "targetPath": "/students/referencing-citation",
-      "id": "69cd9e2eea2e73f759dc0ed74f1bbd62a26e526f"
+      "targetPath": "/researchers/western-open-books",
+      "id": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548"
     }
   ],
   "lastCrawled": "MANUAL",
