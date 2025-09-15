@@ -56,3 +56,72 @@
 .tabs .tabs-panel[aria-hidden='true'] {
   display: none;
 }
+
+
+.tabs.tabs5 {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  min-height: 120px;
+  height: 120px;
+  box-sizing: border-box;
+  border: none;
+  padding: 0;
+  align-items: stretch;
+  margin: 0;
+
+  /* Make sure the block is flush left in its parent */
+  position: relative;
+}
+
+/* Use flex for .tabs-list so that if there is any child, it doesn't collapse */
+.tabs.tabs5 .tabs-list {
+  display: flex;
+  flex-direction: column;
+  width: 6px;
+  min-width: 6px;
+  max-width: 6px;
+  background: #d2b2b2;
+  border: none;
+  margin: 0;
+  padding: 0;
+  align-self: stretch;
+  height: 100%;
+  box-shadow: none;
+  min-height: 100%;
+}
+
+/* Hide tab content inside .tabs-list without affecting layout */
+.tabs.tabs5 .tabs-list > * {
+  flex: 0 0 0%;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  color: transparent;
+}
+
+/* Panel fills remaining space */
+.tabs.tabs5 .tabs-panel {
+  flex: 1 1 auto;
+  background: #fff;
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-height: 120px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive: adjust min-height for small screens */
+@media (width <= 599px) {
+  .tabs.tabs5,
+  .tabs.tabs5 .tabs-panel,
+  .tabs.tabs5 .tabs-list {
+    min-height: 80px;
+    height: 80px;
+  }
+}
