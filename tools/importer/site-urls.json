@@ -3,10 +3,10 @@
   "aborted": false,
   "urls": [
     {
-      "url": "https://library.westernsydney.edu.au/students/referencing-citation",
+      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/liverpool",
       "source": "MANUAL",
-      "targetPath": "/students/referencing-citation",
-      "id": "69cd9e2eea2e73f759dc0ed74f1bbd62a26e526f"
+      "targetPath": "/about-us/campus/locations/liverpool",
+      "id": "f37ca4e199eebaef3e48239df281d2040945e46f"
     }
   ],
   "lastCrawled": "MANUAL",
