@@ -3,10 +3,10 @@
   "aborted": false,
   "urls": [
     {
-      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/liverpool",
+      "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
       "source": "MANUAL",
-      "targetPath": "/about-us/campus/locations/liverpool",
-      "id": "f37ca4e199eebaef3e48239df281d2040945e46f"
+      "targetPath": "/researchers/western-open-books",
+      "id": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548"
     }
   ],
   "lastCrawled": "MANUAL",
