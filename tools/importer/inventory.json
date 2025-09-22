@@ -21,10 +21,10 @@
       ]
     },
     {
-      "name": "Embed",
+      "name": "Embed (video)",
       "cluster": 3,
-      "source": "Embed",
-      "target": "Embed (embed3)",
+      "source": "Embed (video)",
+      "target": "Embed3 (embed3)",
       "key": "embed3",
       "instances": [
         {
