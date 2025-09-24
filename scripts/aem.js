@@ -519,6 +519,17 @@ function decorateSections(main) {
             .filter((style) => style)
             .map((style) => toClassName(style.trim()));
           styles.forEach((style) => section.classList.add(style));
+        } else if (key === 'block') {
+          // Add block classes directly to the section
+          const blockName = meta[key];
+          const baseBlockName = blockName.replace(/\d+$/, ''); // Remove trailing digits
+
+          if (baseBlockName !== blockName) {
+            // If block name has trailing digits, add both base name and full name
+            section.classList.add('container-block', baseBlockName, blockName);
+          } else {
+            section.classList.add('container-block', blockName);
+          }
         } else {
           section.dataset[toCamelCase(key)] = meta[key];
         }
