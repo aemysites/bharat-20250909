@@ -59,7 +59,8 @@
           "uuid": "ac1c0cc8-01-fddb26164dfb1d479320168e4dc58c4a86ac17b2",
           "xpath": "/html[1]/body[1]/div[2]/header[1]/div[2]"
         }
-      ]
+      ],
+      "key": "unknown2"
     },
     {
       "name": "Cards",
