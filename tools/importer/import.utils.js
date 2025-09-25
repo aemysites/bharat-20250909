@@ -11,6 +11,79 @@
  */
 /* global WebImporter */
 
+function isHidden(el, window) {
+  if (!el || !window) {
+    return false;
+  }
+  return /none/i.test(window.getComputedStyle(el)?.display.trim() || '')
+    || /hidden/i.test(window.getComputedStyle(el)?.visibility.trim() || '');
+}
+
+/**
+ * Wrapper function to extract and validate window object
+ * @param {Object} params - Parameters object containing window parameter
+ * @returns {Object|null} Object with window and other parameters, or null if window is invalid
+ */
+function withWindow({ window: windowObj, ...rest }) {
+  // Use provided window object or fall back to global window (browser environment)
+  const globalWindow = windowObj || (typeof window !== 'undefined' ? window : null);
+  if (!globalWindow) {
+    console.warn('Window object is required to process element markers');
+    return null;
+  }
+  return { window: globalWindow, ...rest };
+}
+
+/**
+ * Mark hidden elements
+ */
+export function addHiddenMarkers(params) {
+  const { window: globalWindow, body } = withWindow(params);
+  if (!globalWindow || !body) {
+    return;
+  }
+  body.querySelectorAll('*').forEach((el) => {
+    if (isHidden(el, globalWindow)) {
+      el.setAttribute('data-hlx-imp-hidden-div', '');
+    }
+  });
+}
+
+/**
+ * Add bounding client rect, background image, and color data to all "visible" divs
+ */
+export function addStyleMarkers(params) {
+  const { window: globalWindow, body } = withWindow(params);
+  if (!globalWindow || !body) {
+    return;
+  }
+  body.querySelectorAll('div').forEach((div) => {
+    try {
+      if (div && !isHidden(div, globalWindow)) {
+        let domRect = div.getBoundingClientRect();
+        domRect = 'toJSON' in domRect ? domRect.toJSON() : domRect;
+        if (Math.round(domRect.width) > 0 && Math.round(domRect.height) > 0) {
+          div.setAttribute('data-hlx-imp-rect', JSON.stringify(domRect));
+        }
+        const bgImage = globalWindow.getComputedStyle(div)?.getPropertyValue('background-image');
+        if (bgImage && bgImage !== 'none' && bgImage.includes('url(')) {
+          div.setAttribute('data-hlx-background-image', bgImage);
+        }
+        const bgColor = globalWindow.getComputedStyle(div)?.getPropertyValue('background-color');
+        if (bgColor && bgColor !== 'rgb(0, 0, 0)' && bgColor !== 'rgba(0, 0, 0, 0)') {
+          div.setAttribute('data-hlx-imp-bgcolor', bgColor);
+        }
+        const color = globalWindow.getComputedStyle(div)?.getPropertyValue('color');
+        if (color && color !== 'rgb(0, 0, 0)') {
+          div.setAttribute('data-hlx-imp-color', color);
+        }
+      }
+    } catch (error) {
+      console.error('[Import] error adding style markers to div', error);
+    }
+  });
+}
+
 export async function handleOnLoad({ document }) {
   // send 'esc' keydown event to close the dialog
   document.dispatchEvent(
@@ -31,61 +104,15 @@ export async function handleOnLoad({ document }) {
   );
   document.elementFromPoint(0, 0)?.click();
 
-  // mark hidden elements
-  document.querySelectorAll('*').forEach((el) => {
-    if (
-      el
-      && (
-        /none/i.test(window.getComputedStyle(el).display.trim())
-        || /hidden/i.test(window.getComputedStyle(el).visibility.trim())
-      )
-    ) {
-      el.setAttribute('data-hlx-imp-hidden-div', '');
-    }
-  });
+  const body = document.body || document.documentElement;
 
-  // mark hidden divs + add bounding client rect data to all "visible" divs
-  document.querySelectorAll('div').forEach((div) => {
-    if (
-      div
-      && (
-        /none/i.test(window.getComputedStyle(div).display.trim())
-        || /hidden/i.test(window.getComputedStyle(div).visibility.trim())
-      )
-    ) {
-      div.setAttribute('data-hlx-imp-hidden-div', '');
-    } else {
-      const domRect = div.getBoundingClientRect().toJSON();
-      if (Math.round(domRect.width) > 0 && Math.round(domRect.height) > 0) {
-        div.setAttribute('data-hlx-imp-rect', JSON.stringify(domRect));
-      }
-      const bgImage = window.getComputedStyle(div).getPropertyValue('background-image');
-      if (bgImage && bgImage !== 'none' && bgImage.includes('url(')) {
-        div.setAttribute('data-hlx-background-image', bgImage);
-      }
-      const bgColor = window.getComputedStyle(div).getPropertyValue('background-color');
-      if (bgColor && bgColor !== 'rgb(0, 0, 0)' && bgColor !== 'rgba(0, 0, 0, 0)') {
-        div.setAttribute('data-hlx-imp-bgcolor', bgColor);
-      }
-      const color = window.getComputedStyle(div).getPropertyValue('color');
-      if (color && color !== 'rgb(0, 0, 0)') {
-        div.setAttribute('data-hlx-imp-color', color);
-      }
-    }
-  });
+  // add element markers
+  addHiddenMarkers({ body });
+  addStyleMarkers({ body });
 
-  // fix image with only srcset attribute (not supported in helix-importer)
-  document.querySelectorAll('img').forEach((img) => {
-    const src = img.getAttribute('src');
-    const srcset = img.getAttribute('srcset')?.split(' ')[0];
-    if (!src && srcset) {
-      img.setAttribute('src', srcset);
-    }
-  });
-
-  // get body width
-  const bodyWidth = document.body.getBoundingClientRect().width;
-  document.body.setAttribute('data-hlx-imp-body-width', bodyWidth);
+  // add body width
+  const bodyWidth = body.getBoundingClientRect()?.width;
+  body.setAttribute('data-hlx-imp-body-width', bodyWidth);
 }
 
 /**
