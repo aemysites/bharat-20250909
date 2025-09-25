@@ -1,38 +1,50 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Only process elements with class 'accordion'
-  if (!element.classList.contains('accordion')) return;
-
-  // Table header as per block requirements
-  const headerRow = ['Accordion (accordion3)'];
+  // Helper: create header row
+  const headerRow = ['Accordion3 (accordion3)'];
   const rows = [headerRow];
 
-  // Each .card is an accordion item
+  // Defensive: get all direct child .card elements (each accordion item)
   const cards = element.querySelectorAll(':scope > .card');
-  cards.forEach(card => {
-    // Title cell: get the header text (usually in h2 inside .card-header)
-    let titleCell = '';
+
+  cards.forEach((card) => {
+    // Title cell: get .card-header > h2 (or fallback to .card-header text)
+    let titleCell;
     const header = card.querySelector('.card-header');
     if (header) {
-      const heading = header.querySelector('h1, h2, h3, h4, h5, h6');
-      titleCell = heading ? heading.textContent.trim() : header.textContent.trim();
+      const h2 = header.querySelector('h2');
+      titleCell = h2 ? h2 : header;
+    } else {
+      titleCell = document.createElement('span');
+      titleCell.textContent = 'Accordion Item';
     }
 
-    // Content cell: get the .card-body (all content inside the expanded area)
-    let contentCell = '';
+    // Content cell: get .card-body (all content)
+    let contentCell;
     const body = card.querySelector('.card-body');
     if (body) {
-      // Clone the body to avoid moving nodes from the original DOM
-      contentCell = body.cloneNode(true);
+      // Defensive: replace iframes with links (not images)
+      const iframes = body.querySelectorAll('iframe');
+      iframes.forEach((iframe) => {
+        // Only replace if not inside an <img>
+        if (iframe.parentElement && iframe.parentElement.tagName !== 'IMG') {
+          const link = document.createElement('a');
+          link.href = iframe.src;
+          link.textContent = iframe.src;
+          // Replace iframe with link
+          iframe.replaceWith(link);
+        }
+      });
+      contentCell = body;
+    } else {
+      contentCell = document.createElement('span');
+      contentCell.textContent = '';
     }
 
-    // Push the row if both cells are present
-    if (titleCell && contentCell) {
-      rows.push([titleCell, contentCell]);
-    }
+    rows.push([titleCell, contentCell]);
   });
 
-  // Always replace the element with the table, even if only header
+  // Create and replace block table
   const table = WebImporter.DOMUtils.createTable(rows, document);
   element.replaceWith(table);
 }

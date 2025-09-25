@@ -1,33 +1,29 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper to get direct children by class
-  function getChildByClass(parent, className) {
-    return Array.from(parent.children).find((el) => el.classList.contains(className));
-  }
-
-  // Get all main footer sections
-  const wrapper = getChildByClass(element, 'footer__wrapper');
+  // Defensive: Find all immediate children of the main footer wrapper
+  const wrapper = element.querySelector('.footer__wrapper');
   if (!wrapper) return;
 
-  const contact = getChildByClass(wrapper, 'footer__contact');
-  const follow = getChildByClass(wrapper, 'footer__follow');
-  const primaryLinks = getChildByClass(wrapper, 'footer__primary-links');
-  const secondaryLinks = getChildByClass(wrapper, 'footer__secondary-links');
+  // Get all major sections as columns
+  // 1. Contact
+  const contact = wrapper.querySelector('.footer__contact');
+  // 2. Follow (includes social and app)
+  const follow = wrapper.querySelector('.footer__follow');
+  // 3. Primary links
+  const primaryLinks = wrapper.querySelector('.footer__primary-links');
+  // 4. Secondary links (and copyright)
+  const secondaryLinks = wrapper.querySelector('.footer__secondary-links');
 
-  // Defensive: If any are missing, replace with empty div
-  const col1 = contact || document.createElement('div');
-  const col2 = follow || document.createElement('div');
-  const col3 = primaryLinks || document.createElement('div');
-  const col4 = secondaryLinks || document.createElement('div');
+  // Compose the columns row
+  const columnsRow = [contact, follow, primaryLinks, secondaryLinks].filter(Boolean);
 
-  // Build table rows
+  // Table header
   const headerRow = ['Columns block (columns4)'];
-  const columnsRow = [col1, col2, col3, col4];
 
-  const table = WebImporter.DOMUtils.createTable([
-    headerRow,
-    columnsRow,
-  ], document);
+  // Build the table
+  const cells = [headerRow, columnsRow];
+  const block = WebImporter.DOMUtils.createTable(cells, document);
 
-  element.replaceWith(table);
+  // Replace the original element
+  element.replaceWith(block);
 }

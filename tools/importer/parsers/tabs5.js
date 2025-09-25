@@ -1,26 +1,38 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Always use the target block name as the header row
+  // Always use the block name as the header row
   const headerRow = ['Tabs (tabs5)'];
   const rows = [headerRow];
 
-  // Extract tab label from the .lcs_header a element
-  let tabLabel = '';
+  // Find the tab label (from header)
   const headerDiv = element.querySelector('.lcs_header');
+  let tabLabel = '';
   if (headerDiv) {
-    const tabBtn = headerDiv.querySelector('a');
-    if (tabBtn && tabBtn.textContent) {
-      tabLabel = tabBtn.textContent.trim();
+    const tabButton = headerDiv.querySelector('a');
+    if (tabButton) {
+      tabLabel = tabButton.textContent.trim();
     }
   }
 
-  // Extract tab content: in this HTML, there is no visible tab content, but per requirements, both columns are mandatory
-  // If there is no content, use a non-breaking space to avoid an unnecessary empty column
+  // Find tab content: use all visible text except the tab label
+  let tabContent = '';
+  // Exclude header and overlay
+  Array.from(element.children).forEach((child) => {
+    if (!child.classList.contains('lcs_header') && !child.classList.contains('tab_overlay')) {
+      // Get all text content inside this child
+      const text = child.textContent.trim();
+      if (text && text !== tabLabel) {
+        tabContent += (tabContent ? '\n' : '') + text;
+      }
+    }
+  });
+
+  // Only add row if tabLabel exists (tabContent may be empty)
   if (tabLabel) {
-    rows.push([tabLabel, '\u00A0']);
+    rows.push([tabLabel, tabContent]);
   }
 
-  // Create and replace
-  const table = WebImporter.DOMUtils.createTable(rows, document);
-  element.replaceWith(table);
+  // Create the table block
+  const block = WebImporter.DOMUtils.createTable(rows, document);
+  element.replaceWith(block);
 }

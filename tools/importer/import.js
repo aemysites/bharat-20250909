@@ -11,6 +11,9 @@
  */
 /* global WebImporter */
 /* eslint-disable no-console */
+import accordion3Parser from './parsers/accordion3.js';
+import search2Parser from './parsers/search2.js';
+import embedVideo3Parser from './parsers/embedVideo3.js';
 import columns4Parser from './parsers/columns4.js';
 import tabs5Parser from './parsers/tabs5.js';
 import cards3Parser from './parsers/cards3.js';
@@ -30,6 +33,9 @@ import {
 
 const parsers = {
   metadata: metadataParser,
+  accordion3: accordion3Parser,
+  search2: search2Parser,
+  embedVideo3: embedVideo3Parser,
   columns4: columns4Parser,
   tabs5: tabs5Parser,
   cards3: cards3Parser,

@@ -1,89 +1,72 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the cards wrapper (source block)
+  // Find the cards wrapper
   const cardsWrapper = element.querySelector('.cards__wrapper');
   if (!cardsWrapper) return;
 
-  // Find all card items
-  const cardItems = cardsWrapper.querySelectorAll('.cards__item');
+  // Find the actual cards list
+  const cardsList = cardsWrapper.querySelector('.cards__list');
+  if (!cardsList) return;
 
-  // Header row as required
+  // Get all card items
+  const cardItems = Array.from(cardsList.querySelectorAll('.cards__item'));
+
+  // Header row as per block spec
   const headerRow = ['Cards (cards3)'];
   const rows = [headerRow];
 
-  // For each card, extract image/icon, title, description, CTA
   cardItems.forEach((cardItem) => {
     const itemWrapper = cardItem.querySelector('.item-wrapper');
-    let imageEl = null;
-    // Find image link
-    const imageLink = itemWrapper.querySelector('.item-image');
-    if (imageLink && imageLink.style.backgroundImage) {
-      // Extract image URL from background-image style
-      const bgUrlMatch = imageLink.style.backgroundImage.match(/url\(['"]?(.*?)['"]?\)/);
+    if (!itemWrapper) return;
+
+    // --- IMAGE/ICON CELL ---
+    let imageCell = '';
+    const imageAnchor = itemWrapper.querySelector('.item-image');
+    if (imageAnchor && imageAnchor.style.backgroundImage) {
+      const bgUrlMatch = imageAnchor.style.backgroundImage.match(/url\(['"]?(.*?)['"]?\)/);
       if (bgUrlMatch && bgUrlMatch[1]) {
-        imageEl = document.createElement('img');
-        imageEl.src = bgUrlMatch[1].trim();
-        imageEl.alt = imageLink.getAttribute('alt') || '';
+        const img = document.createElement('img');
+        img.src = bgUrlMatch[1].trim();
+        img.alt = imageAnchor.getAttribute('alt') || '';
+        imageCell = img;
       }
+    } else {
+      // If no image, use a 1x1 transparent gif as a placeholder to ensure no empty column
+      const img = document.createElement('img');
+      img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+      img.alt = '';
+      img.style.display = 'none';
+      imageCell = img;
     }
 
-    // If no image, use a 1x1 transparent gif as a placeholder to ensure table structure
-    if (!imageEl) {
-      imageEl = document.createElement('img');
-      imageEl.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
-      imageEl.alt = '';
-      imageEl.width = 1;
-      imageEl.height = 1;
-      imageEl.style.opacity = '0';
-    }
-
-    // Card content
+    // --- TEXT CELL ---
     const itemContent = itemWrapper.querySelector('.item-content');
-    let titleEl = null;
-    let descEl = null;
-    let ctaEl = null;
+    const textCellContent = [];
     if (itemContent) {
-      // Title
       const title = itemContent.querySelector('.item-content__title');
       if (title) {
-        titleEl = document.createElement('strong');
-        titleEl.textContent = title.textContent.trim();
+        const strong = document.createElement('strong');
+        strong.textContent = title.textContent.trim();
+        textCellContent.push(strong);
       }
-      // Description
       const desc = itemContent.querySelector('.item-content__desc');
       if (desc) {
-        descEl = document.createElement('div');
-        descEl.textContent = desc.textContent.trim();
+        const p = document.createElement('p');
+        p.textContent = desc.textContent.trim();
+        textCellContent.push(p);
       }
-      // CTA
       const cta = itemContent.querySelector('.item-content__link');
       if (cta) {
-        ctaEl = document.createElement('a');
-        ctaEl.href = cta.href;
-        ctaEl.textContent = cta.textContent.trim();
+        textCellContent.push(cta);
       }
     }
+    const textCell = textCellContent.length ? textCellContent : '';
 
-    // Tag (optional, e.g., Featured, Coming Soon)
-    const tagEl = itemWrapper.querySelector('.tag');
-    let tagSpan = null;
-    if (tagEl) {
-      tagSpan = document.createElement('span');
-      tagSpan.textContent = tagEl.textContent.trim();
-      tagSpan.className = tagEl.className;
-    }
-
-    // Compose text cell
-    const textCellContent = [];
-    if (titleEl) textCellContent.push(titleEl);
-    if (tagSpan) textCellContent.push(document.createElement('br'), tagSpan);
-    if (descEl) textCellContent.push(document.createElement('br'), descEl);
-    if (ctaEl) textCellContent.push(document.createElement('br'), ctaEl);
-
-    rows.push([imageEl, textCellContent]);
+    rows.push([imageCell, textCell]);
   });
 
-  // Always create the block (even if only header row)
+  // Create the block table
   const block = WebImporter.DOMUtils.createTable(rows, document);
+  // Replace the cards wrapper with the block table
   cardsWrapper.replaceWith(block);
 }
