@@ -35,6 +35,53 @@
   ],
   "blocks": [
     {
+      "name": "Accordion",
+      "cluster": 3,
+      "source": "Accordion",
+      "target": "Accordion3 (accordion3)",
+      "key": "accordion3",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
+          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
+          "uuid": "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[6]",
+          "nestedBlocks": [
+            "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0-embeds-1",
+            "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0-embeds-2",
+            "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0-embeds-3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Embed (video)",
+      "cluster": 3,
+      "source": "Embed (video)",
+      "target": "Embed3 (embed3)",
+      "key": "embed3",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
+          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
+          "uuid": "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0-embeds-1",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[6]/div[1]/div[2]/div[1]/p[2]/iframe[1]"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
+          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
+          "uuid": "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0-embeds-2",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[6]/div[2]/div[2]/div[1]/p[3]/iframe[1]"
+        },
+        {
+          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
+          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
+          "uuid": "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0-embeds-3",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[6]/div[3]/div[2]/div[1]/p[3]/iframe[1]"
+        }
+      ]
+    },
+    {
       "name": "header",
       "cluster": 1,
       "source": "Header",
@@ -50,8 +97,11 @@
       ]
     },
     {
-      "name": "unknown",
+      "name": "Search",
       "cluster": 2,
+      "source": "Search",
+      "target": "Search (search2)",
+      "key": "search2",
       "instances": [
         {
           "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
@@ -59,8 +109,7 @@
           "uuid": "ac1c0cc8-01-fddb26164dfb1d479320168e4dc58c4a86ac17b2",
           "xpath": "/html[1]/body[1]/div[2]/header[1]/div[2]"
         }
-      ],
-      "key": "unknown2"
+      ]
     },
     {
       "name": "Cards",
