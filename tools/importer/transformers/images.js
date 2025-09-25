@@ -12,6 +12,55 @@
 
 import { TransformHook } from './transform.js';
 
+function extractUrlFromBackgroundImage(backgroundImage) {
+  if (!backgroundImage || backgroundImage.toLowerCase() === 'none') {
+    return null;
+  }
+
+  // Handle both inline styles and computed styles
+  const urlMatch = backgroundImage.match(/url\(['"]?([^'")\s]+)['"]?\)/);
+  return urlMatch ? urlMatch[1] : null;
+}
+
+function createImageFromUrl(src, document) {
+  if (!src) return null;
+  const img = document.createElement('img');
+  img.src = src;
+  return img;
+}
+
+function processElementWithBackgroundImage(element, document, backgroundImage) {
+  const src = extractUrlFromBackgroundImage(backgroundImage);
+  if (!src) return false;
+
+  const img = createImageFromUrl(src, document);
+  if (img) {
+    element.prepend(img);
+    element.style.backgroundImage = 'none';
+    return true;
+  }
+  return false;
+}
+
+// Unified function to get background image from any source
+function getBackgroundImageFromElement(element) {
+  // First check inline styles
+  const inlineStyle = element.getAttribute('style');
+  if (inlineStyle) {
+    const styleParts = inlineStyle.split(';');
+    for (const style of styleParts) {
+      const [prop, ...valueParts] = style.split(':');
+      if (prop?.trim() === 'background-image') {
+        const value = valueParts.join(':').trim();
+        return value;
+      }
+    }
+  }
+
+  // Fall back to data-hlx-background-image attribute
+  return element.getAttribute('data-hlx-background-image');
+}
+
 /**
  * Extracts the image URL from a picture element sources
  * @param {HTMLElement} pictureElement - The picture element
@@ -64,6 +113,20 @@ function extractPictureSource(pictureElement) {
   return null;
 }
 
+function transformBackgroundImages(main, document) {
+  // Process all elements that might have background images
+  const inlineElements = main.querySelectorAll('[style*="background-image: url"], [data-hlx-background-image]');
+  inlineElements.forEach((element) => {
+    const backgroundImage = getBackgroundImageFromElement(element);
+    if (backgroundImage) {
+      processElementWithBackgroundImage(element, document, backgroundImage);
+    }
+  });
+}
+
+/**
+ * Ensure every picture element has an img element with a src attribute
+ */
 function adjustPictureImages(main) {
   const pictures = main.querySelectorAll('picture');
   pictures.forEach((picture) => {
@@ -80,9 +143,18 @@ function adjustPictureImages(main) {
   });
 }
 
+/**
+ * Adjust the src attribute of all img elements to be relative to the original URL
+ */
 function adjustImageUrls(main, url, current) {
   [...main.querySelectorAll('img')].forEach((img) => {
     let src = img.getAttribute('src');
+    // fix image with only srcset attribute (not supported in helix-importer)
+    const srcset = img.getAttribute('srcset')?.split(' ')[0];
+    if (!src && srcset) {
+      img.setAttribute('src', srcset);
+    }
+    src = img.getAttribute('src');
     if (src) {
       // handle relative URLs that are not starting with ./ or / or ../
       try {
@@ -96,7 +168,7 @@ function adjustImageUrls(main, url, current) {
       }
 
       try {
-        if (src.startsWith('./') || src.startsWith('/') || src.startsWith('../')) {
+        if (url && (src.startsWith('./') || src.startsWith('/') || src.startsWith('../'))) {
           // transform relative URLs to absolute URLs
           const targetUrl = new URL(src, url);
           // eslint-disable-next-line no-param-reassign
@@ -126,8 +198,20 @@ function adjustImageUrls(main, url, current) {
 function transformSvgsToPng(main) {
   const svgs = main.querySelectorAll('svg');
   svgs.forEach((svg) => {
-    const serializer = new XMLSerializer();
-    const svgString = serializer.serializeToString(svg);
+    // Manually construct SVG string to ensure valid XML output
+    let svgString = '<svg';
+
+    // Add all attributes
+    for (const attr of svg.attributes) {
+      svgString += ` ${attr.name}="${attr.value}"`;
+    }
+    svgString += '>';
+
+    // Add inner content
+    svgString += svg.innerHTML;
+    svgString += '</svg>';
+
+    // Create data URL with proper UTF-8 encoding
     const svgDataUrl = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svgString)))}`;
     const img = svg.ownerDocument.createElement('img');
     img.src = svgDataUrl;
@@ -135,13 +219,15 @@ function transformSvgsToPng(main) {
   });
 }
 
-export default function transform(hookName, element, { url, originalURL }) {
+export default function transform(hookName, element, { document, url, originalURL }) {
   if (hookName === TransformHook.beforeTransform) {
+    // adjust background images
+    transformBackgroundImages(element, document);
     // adjust picture images
     adjustPictureImages(element);
     // adjust image urls
     adjustImageUrls(element, url, originalURL);
-    // transform svgs to png
+    // transform svgs to pngs
     transformSvgsToPng(element);
   }
 }

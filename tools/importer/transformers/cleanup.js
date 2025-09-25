@@ -47,6 +47,7 @@ export default function transform(hookName, element) {
       'noscript',
     ]);
   }
+
   if (hookName === TransformHook.afterTransform) {
     // cleanup unwanted attributes
     cleanUpAttributes(element);
