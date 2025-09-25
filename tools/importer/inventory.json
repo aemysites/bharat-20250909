@@ -59,7 +59,7 @@
       "cluster": 3,
       "source": "Embed (video)",
       "target": "Embed3 (embed3)",
-      "key": "embed3",
+      "key": "embedVideo3",
       "instances": [
         {
           "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
