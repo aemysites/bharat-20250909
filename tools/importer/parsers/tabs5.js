@@ -1,26 +1,26 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Only parse if element has the expected structure
-  if (!element || !element.classList.contains('lcs_slide_out')) return;
-
-  // Find the tab label (the header link)
-  const headerLink = element.querySelector('.lcs_header > a');
-
-  // Build the table rows
+  // Always use the target block name as the header row
   const headerRow = ['Tabs (tabs5)'];
   const rows = [headerRow];
 
-  if (headerLink) {
-    // Always include two columns: Tab Label and Tab Content (even if empty)
-    rows.push([
-      headerLink.textContent.trim(), // Tab Label
-      '' // Tab Content (empty, as there is none in the HTML)
-    ]);
+  // Extract tab label from the .lcs_header a element
+  let tabLabel = '';
+  const headerDiv = element.querySelector('.lcs_header');
+  if (headerDiv) {
+    const tabBtn = headerDiv.querySelector('a');
+    if (tabBtn && tabBtn.textContent) {
+      tabLabel = tabBtn.textContent.trim();
+    }
   }
 
-  // Create the block table
-  const table = WebImporter.DOMUtils.createTable(rows, document);
+  // Extract tab content: in this HTML, there is no visible tab content, but per requirements, both columns are mandatory
+  // If there is no content, use a non-breaking space to avoid an unnecessary empty column
+  if (tabLabel) {
+    rows.push([tabLabel, '\u00A0']);
+  }
 
-  // Replace the original element with the new table
+  // Create and replace
+  const table = WebImporter.DOMUtils.createTable(rows, document);
   element.replaceWith(table);
 }

@@ -10,10 +10,20 @@
  * governing permissions and limitations under the License.
  */
 
+/**
+ * Transformation hooks are executed during an import lifecycle.
+ * Transformation functions can be used to perform additional transformations to the page.
+ *
+ * Function Signature:
+ *
+ * (hookName, element, payload) => {
+ *   // transform the element
+ * }
+ */
 export const TransformHook = Object.freeze({
-  // Before import transformation begins
+  // Before import transformation begins (be careful to not break block xpaths when using this hook)
   beforeTransform: 'beforeTransform',
-  // Before page transformation begins
+  // Before page transformation begins and after xpaths are evaluated
   beforePageTransform: 'beforePageTransform',
   // Before each block parsing begins
   beforeParse: 'beforeParse',
