@@ -1,26 +1,27 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Only parse if element has the expected structure
-  if (!element || !element.classList.contains('lcs_slide_out')) return;
+  // Find the tab label from the header
+  const header = element.querySelector('.lcs_header');
+  if (!header) return;
+  const tabButton = header.querySelector('a');
+  const tabLabel = tabButton ? tabButton.textContent.trim() : 'Tab';
 
-  // Find the tab label (the header link)
-  const headerLink = element.querySelector('.lcs_header > a');
-
-  // Build the table rows
+  // Find all visible tab content (excluding overlays, loaders, header)
+  let tabContent = '';
+  Array.from(element.children).forEach(node => {
+    if (
+      !node.classList.contains('lcs_header') &&
+      !node.classList.contains('tab_overlay') &&
+      !node.classList.contains('lcs_load')
+    ) {
+      // Add text content even if empty (to ensure at least an empty string)
+      tabContent += node.textContent;
+    }
+  });
+  tabContent = tabContent.trim();
+  // Always output a 2-column row, even if tabContent is empty
   const headerRow = ['Tabs (tabs5)'];
-  const rows = [headerRow];
-
-  if (headerLink) {
-    // Always include two columns: Tab Label and Tab Content (even if empty)
-    rows.push([
-      headerLink.textContent.trim(), // Tab Label
-      '' // Tab Content (empty, as there is none in the HTML)
-    ]);
-  }
-
-  // Create the block table
+  const rows = [headerRow, [tabLabel, tabContent]];
   const table = WebImporter.DOMUtils.createTable(rows, document);
-
-  // Replace the original element with the new table
   element.replaceWith(table);
 }

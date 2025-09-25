@@ -1,41 +1,54 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Defensive: Find the main wrapper (should be .footer__wrapper)
+  // Helper to get immediate children by class
+  const getChildByClass = (parent, className) =>
+    Array.from(parent.children).find((child) => child.classList.contains(className));
+
+  // Get main wrappers
   const wrapper = element.querySelector('.footer__wrapper') || element;
 
-  // Get the four main columns in the footer
-  // 1. Contact
-  // 2. Follow (social + app)
-  // 3. Primary links
-  // 4. Secondary links
-  // We'll use direct children of wrapper for robustness
-  const columns = [];
-  const colDivs = Array.from(wrapper.children);
+  // Get columns: contact, follow, primary, secondary
+  const contact = getChildByClass(wrapper, 'footer__contact');
+  const follow = getChildByClass(wrapper, 'footer__follow');
+  const primaryLinks = getChildByClass(wrapper, 'footer__primary-links');
+  const secondaryLinks = getChildByClass(wrapper, 'footer__secondary-links');
 
-  // Defensive: Only keep divs that have content
-  colDivs.forEach((col) => {
-    // Only include columns with at least one child
-    if (col && col.children.length > 0) {
-      columns.push(col);
-    }
-  });
-
-  // Defensive: If we have less than 4 columns, try to find missing ones
-  // (not strictly necessary for this HTML, but helps with future-proofing)
-  while (columns.length < 4) {
-    columns.push(document.createElement('div'));
+  // Defensive: if follow is present, split further
+  let followSocial, followConnect;
+  if (follow) {
+    followSocial = getChildByClass(follow, 'footer__follow-social');
+    followConnect = getChildByClass(follow, 'footer__follow-connect');
   }
 
-  // Table header
+  // 4 columns: contact, social, connect(app), primary links
+  // We'll combine social/connect into one column for balance if needed
+
+  // Compose content for each column
+  const col1 = contact ? contact : document.createElement('div');
+
+  // Social and connect as one column (both parts of 'follow')
+  let col2;
+  if (followSocial || followConnect) {
+    col2 = document.createElement('div');
+    if (followSocial) col2.appendChild(followSocial);
+    if (followConnect) col2.appendChild(followConnect);
+  } else {
+    col2 = document.createElement('div');
+  }
+
+  const col3 = primaryLinks ? primaryLinks : document.createElement('div');
+  const col4 = secondaryLinks ? secondaryLinks : document.createElement('div');
+
+  // Compose table rows
   const headerRow = ['Columns block (columns4)'];
+  const contentRow = [col1, col2, col3, col4];
 
-  // Table content row: each column's content in a cell
-  const contentRow = columns.map((col) => col);
+  // Build table
+  const table = WebImporter.DOMUtils.createTable([
+    headerRow,
+    contentRow,
+  ], document);
 
-  // Create the block table
-  const cells = [headerRow, contentRow];
-  const block = WebImporter.DOMUtils.createTable(cells, document);
-
-  // Replace the original element with the block table
-  element.replaceWith(block);
+  // Replace original element
+  element.replaceWith(table);
 }

@@ -1,38 +1,40 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Only process elements with class 'accordion'
-  if (!element.classList.contains('accordion')) return;
+  // Step 1: Create Section Metadata table for parent block with <thead> and <tbody>
+  const table = document.createElement('table');
 
-  // Table header as per block requirements
-  const headerRow = ['Accordion (accordion3)'];
-  const rows = [headerRow];
+  // Create thead with one column
+  const thead = document.createElement('thead');
+  const headerRow = document.createElement('tr');
+  const headerCell = document.createElement('th');
+  headerCell.textContent = 'Section Metadata';
+  headerRow.appendChild(headerCell);
+  thead.appendChild(headerRow);
 
-  // Each .card is an accordion item
-  const cards = element.querySelectorAll(':scope > .card');
-  cards.forEach(card => {
-    // Title cell: get the header text (usually in h2 inside .card-header)
-    let titleCell = '';
-    const header = card.querySelector('.card-header');
-    if (header) {
-      const heading = header.querySelector('h1, h2, h3, h4, h5, h6');
-      titleCell = heading ? heading.textContent.trim() : header.textContent.trim();
-    }
+  // Create tbody with block metadata row
+  const tbody = document.createElement('tbody');
+  const blockRow = document.createElement('tr');
+  const blockCell = document.createElement('td');
+  blockCell.textContent = 'block';
+  const typeCell = document.createElement('td');
+  typeCell.textContent = 'accordion3';
+  blockRow.appendChild(blockCell);
+  blockRow.appendChild(typeCell);
+  tbody.appendChild(blockRow);
 
-    // Content cell: get the .card-body (all content inside the expanded area)
-    let contentCell = '';
-    const body = card.querySelector('.card-body');
-    if (body) {
-      // Clone the body to avoid moving nodes from the original DOM
-      contentCell = body.cloneNode(true);
-    }
+  table.appendChild(thead);
+  table.appendChild(tbody);
 
-    // Push the row if both cells are present
-    if (titleCell && contentCell) {
-      rows.push([titleCell, contentCell]);
-    }
-  });
+  // Step 2: Create an empty content section (for child accordion item blocks)
+  const contentSection = document.createElement('div');
+  contentSection.className = 'parent-block-content';
+  // Insert a comment to mark where child accordion blocks will be placed
+  contentSection.appendChild(document.createComment('Child accordion item blocks will be inserted here'));
 
-  // Always replace the element with the table, even if only header
-  const table = WebImporter.DOMUtils.createTable(rows, document);
-  element.replaceWith(table);
+  // Step 3: Create section breaks (hr)
+  const hrStart = document.createElement('hr');
+  const hrEnd = document.createElement('hr');
+
+  // Step 4: Replace the original element with the new section structure
+  element.replaceWith(hrStart, contentSection, table, hrEnd);
 }

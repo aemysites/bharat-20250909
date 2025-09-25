@@ -12,9 +12,11 @@
 /* global WebImporter */
 /* eslint-disable no-console */
 import columns4Parser from './parsers/columns4.js';
-import columns2Parser from './parsers/columns2.js';
+import search2Parser from './parsers/search2.js';
+import embed3Parser from './parsers/embed3.js';
 import accordion3Parser from './parsers/accordion3.js';
 import tabs5Parser from './parsers/tabs5.js';
+import cards3Parser from './parsers/cards3.js';
 import headerParser from './parsers/header.js';
 import metadataParser from './parsers/metadata.js';
 import cleanupTransformer from './transformers/cleanup.js';
@@ -32,9 +34,11 @@ import {
 const parsers = {
   metadata: metadataParser,
   columns4: columns4Parser,
-  columns2: columns2Parser,
+  search2: search2Parser,
+  embed3: embed3Parser,
   accordion3: accordion3Parser,
   tabs5: tabs5Parser,
+  cards3: cards3Parser,
   ...customParsers,
 };
 
@@ -116,7 +120,8 @@ function transformPage(main, { inventory, ...source }) {
     .map((instance) => ({
       ...instance,
       element: WebImporter.Import.getElementByXPath(document, instance.xpath),
-    }));
+    }))
+    .filter((block) => block.element);
 
   // remove fragment elements from the current page
   fragmentElements.forEach((element) => {
@@ -128,21 +133,65 @@ function transformPage(main, { inventory, ...source }) {
   // before page transform hook
   WebImporter.Import.transform(TransformHook.beforePageTransform, main, { ...source });
 
-  // transform all elements using parsers
-  [...defaultContentElements, ...blockElements, ...pageElements]
-    // sort elements by order in the page
-    .sort((a, b) => (a.uuid ? parseInt(a.uuid.split('-')[1], 10) - parseInt(b.uuid.split('-')[1], 10) : 999))
-    // filter out fragment elements
+  // Build parent-child relationships map for nested blocks
+  const parentChildMap = new Map();
+  const childParentMap = new Map();
+  
+  inventoryBlocks.forEach((block) => {
+    block.instances
+      .filter((instance) => WebImporter.Import.findSiteUrl(instance, urls)?.url === originalURL)
+      .forEach((instance) => {
+        if (instance.nestedBlocks && Array.isArray(instance.nestedBlocks)) {
+          // This instance is a parent
+          parentChildMap.set(instance.uuid, instance.nestedBlocks);
+          
+          // Map each child to its parent
+          instance.nestedBlocks.forEach((childUuid) => {
+            childParentMap.set(childUuid, instance.uuid);
+          });
+        }
+      });
+  });
+
+  // Separate parent blocks, child blocks, and regular blocks
+  const allElements = [...defaultContentElements, ...blockElements, ...pageElements];
+  const parentBlocks = [];
+  const childBlocks = [];
+  const regularBlocks = [];
+  
+  allElements.forEach((item) => {
+    if (item.uuid && parentChildMap.has(item.uuid)) {
+      parentBlocks.push(item);
+    } else if (item.uuid && childParentMap.has(item.uuid)) {
+      childBlocks.push(item);
+    } else {
+      regularBlocks.push(item);
+    }
+  });
+
+  // Process blocks in order: parents first, then regular blocks, then children
+  const processOrder = [
+    ...parentBlocks.sort((a, b) => (a.uuid ? parseInt(a.uuid.split('-')[1], 10) - parseInt(b.uuid.split('-')[1], 10) : 999)),
+    ...regularBlocks.sort((a, b) => (a.uuid ? parseInt(a.uuid.split('-')[1], 10) - parseInt(b.uuid.split('-')[1], 10) : 999)),
+    ...childBlocks.sort((a, b) => (a.uuid ? parseInt(a.uuid.split('-')[1], 10) - parseInt(b.uuid.split('-')[1], 10) : 999))
+  ];
+
+  // Store references to parent sections for child placement
+  const parentSections = new Map();
+
+  processOrder
     .filter((item) => !fragmentElements.includes(item.element))
     .forEach((item, idx, arr) => {
       const { element = main, ...pageBlock } = item;
       const parserName = WebImporter.Import.getParserName(pageBlock);
       const parserFn = parsers[parserName];
+      
       try {
         let parserElement = element;
         if (typeof parserElement === 'string') {
           parserElement = main.querySelector(parserElement);
         }
+        
         // before parse hook
         WebImporter.Import.transform(
           TransformHook.beforeParse,
@@ -153,10 +202,51 @@ function transformPage(main, { inventory, ...source }) {
             nextEl: arr[idx + 1],
           },
         );
-        // parse the element
-        if (parserFn) {
-          parserFn.call(this, parserElement, { ...source });
+        
+        // Special handling for nested blocks
+        if (item.uuid && parentChildMap.has(item.uuid)) {
+          // This is a parent block - parse normally and store section reference
+          if (parserFn) {
+            parserFn.call(this, parserElement, { ...source });
+            
+            // Find the created section (look for the content div created by parent parser)
+            const parentSection = main.querySelector('.parent-block-content');
+            if (parentSection) {
+              parentSections.set(item.uuid, parentSection);
+            }
+          }
+        } else if (item.uuid && childParentMap.has(item.uuid)) {
+          // This is a child block - parse and place inside parent section
+          const parentUuid = childParentMap.get(item.uuid);
+          const parentSection = parentSections.get(parentUuid);
+          
+          if (parserFn && parentSection) {
+            // Create a temporary container for the child block
+            const tempContainer = document.createElement('div');
+            tempContainer.appendChild(parserElement.cloneNode(true));
+            
+            // Parse the child block in the temporary container
+            const tempElement = tempContainer.firstChild;
+            parserFn.call(this, tempElement, { ...source });
+            
+            // Move the parsed child block into the parent section
+            while (tempContainer.firstChild) {
+              parentSection.appendChild(tempContainer.firstChild);
+            }
+            
+            // Remove the original child element from its location
+            parserElement.remove();
+          } else if (parserFn) {
+            // Fallback: parse normally if parent section not found
+            parserFn.call(this, parserElement, { ...source });
+          }
+        } else {
+          // Regular block - parse normally
+          if (parserFn) {
+            parserFn.call(this, parserElement, { ...source });
+          }
         }
+        
         // after parse hook
         WebImporter.Import.transform(
           TransformHook.afterParse,
@@ -248,8 +338,8 @@ export default {
     await handleOnLoad(payload);
   },
 
-  transform: async (source) => {
-    const { document, params: { originalURL } } = source;
+  transform: async (payload) => {
+    const { document, params: { originalURL } } = payload;
 
     /* eslint-disable-next-line prefer-const */
     let publishUrl = window.location.origin;
@@ -278,7 +368,7 @@ export default {
     let main = document.body;
 
     // before transform hook
-    WebImporter.Import.transform(TransformHook.beforeTransform, main, { ...source, inventory });
+    WebImporter.Import.transform(TransformHook.beforeTransform, main, { ...payload, inventory });
 
     // perform the transformation
     let path = null;
@@ -291,16 +381,16 @@ export default {
         return [];
       }
       main = document.createElement('div');
-      transformFragment(main, { ...source, fragment, inventory });
+      transformFragment(main, { ...payload, fragment, inventory });
       path = fragment.path;
     } else {
       // page transformation
-      transformPage(main, { ...source, inventory });
-      path = generateDocumentPath(source, inventory);
+      transformPage(main, { ...payload, inventory });
+      path = generateDocumentPath(payload, inventory);
     }
 
     // after transform hook
-    WebImporter.Import.transform(TransformHook.afterTransform, main, { ...source, inventory });
+    WebImporter.Import.transform(TransformHook.afterTransform, main, { ...payload, inventory });
 
     return [{
       element: main,

@@ -11,6 +11,67 @@
  */
 /* global WebImporter */
 
+export function addElementMarkers({ document, window: windowObj }) {
+  // Use provided window object or fall back to global window (browser environment)
+  const globalWindow = windowObj || (typeof window !== 'undefined' ? window : null);
+
+  if (!globalWindow) {
+    console.warn('Window object is required to add element markers');
+    return;
+  }
+
+  const body = document.body || document.documentElement;
+
+  // mark hidden elements
+  body.querySelectorAll('*').forEach((el) => {
+    if (
+      el
+        && (
+          /none/i.test(globalWindow.getComputedStyle(el).display.trim())
+          || /hidden/i.test(globalWindow.getComputedStyle(el).visibility.trim())
+        )
+    ) {
+      el.setAttribute('data-hlx-imp-hidden-div', '');
+    }
+  });
+
+  // mark hidden divs, add bounding client rect, background image,
+  // and color data to all "visible" divs
+  body.querySelectorAll('div').forEach((div) => {
+    if (
+      div
+        && (
+          /none/i.test(globalWindow.getComputedStyle(div).display.trim())
+          || /hidden/i.test(globalWindow.getComputedStyle(div).visibility.trim())
+        )
+    ) {
+      div.setAttribute('data-hlx-imp-hidden-div', '');
+    } else {
+      let domRect = div.getBoundingClientRect();
+      domRect = 'toJSON' in domRect ? domRect.toJSON() : domRect;
+      if (Math.round(domRect.width) > 0 && Math.round(domRect.height) > 0) {
+        div.setAttribute('data-hlx-imp-rect', JSON.stringify(domRect));
+      }
+      const bgImage = globalWindow.getComputedStyle(div).getPropertyValue('background-image');
+      if (bgImage && bgImage !== 'none' && bgImage.includes('url(')) {
+        div.setAttribute('data-hlx-background-image', bgImage);
+      }
+      const bgColor = globalWindow.getComputedStyle(div).getPropertyValue('background-color');
+      if (bgColor && bgColor !== 'rgb(0, 0, 0)' && bgColor !== 'rgba(0, 0, 0, 0)') {
+        div.setAttribute('data-hlx-imp-bgcolor', bgColor);
+      }
+      const color = globalWindow.getComputedStyle(div).getPropertyValue('color');
+      if (color && color !== 'rgb(0, 0, 0)') {
+        div.setAttribute('data-hlx-imp-color', color);
+      }
+    }
+  });
+
+  // get body width
+  const bodyWidth = body.getBoundingClientRect().width;
+  body.setAttribute('data-hlx-imp-body-width', bodyWidth);
+}
+
 export async function handleOnLoad({ document }) {
   // send 'esc' keydown event to close the dialog
   document.dispatchEvent(
@@ -31,61 +92,8 @@ export async function handleOnLoad({ document }) {
   );
   document.elementFromPoint(0, 0)?.click();
 
-  // mark hidden elements
-  document.querySelectorAll('*').forEach((el) => {
-    if (
-      el
-      && (
-        /none/i.test(window.getComputedStyle(el).display.trim())
-        || /hidden/i.test(window.getComputedStyle(el).visibility.trim())
-      )
-    ) {
-      el.setAttribute('data-hlx-imp-hidden-div', '');
-    }
-  });
-
-  // mark hidden divs + add bounding client rect data to all "visible" divs
-  document.querySelectorAll('div').forEach((div) => {
-    if (
-      div
-      && (
-        /none/i.test(window.getComputedStyle(div).display.trim())
-        || /hidden/i.test(window.getComputedStyle(div).visibility.trim())
-      )
-    ) {
-      div.setAttribute('data-hlx-imp-hidden-div', '');
-    } else {
-      const domRect = div.getBoundingClientRect().toJSON();
-      if (Math.round(domRect.width) > 0 && Math.round(domRect.height) > 0) {
-        div.setAttribute('data-hlx-imp-rect', JSON.stringify(domRect));
-      }
-      const bgImage = window.getComputedStyle(div).getPropertyValue('background-image');
-      if (bgImage && bgImage !== 'none' && bgImage.includes('url(')) {
-        div.setAttribute('data-hlx-background-image', bgImage);
-      }
-      const bgColor = window.getComputedStyle(div).getPropertyValue('background-color');
-      if (bgColor && bgColor !== 'rgb(0, 0, 0)' && bgColor !== 'rgba(0, 0, 0, 0)') {
-        div.setAttribute('data-hlx-imp-bgcolor', bgColor);
-      }
-      const color = window.getComputedStyle(div).getPropertyValue('color');
-      if (color && color !== 'rgb(0, 0, 0)') {
-        div.setAttribute('data-hlx-imp-color', color);
-      }
-    }
-  });
-
-  // fix image with only srcset attribute (not supported in helix-importer)
-  document.querySelectorAll('img').forEach((img) => {
-    const src = img.getAttribute('src');
-    const srcset = img.getAttribute('srcset')?.split(' ')[0];
-    if (!src && srcset) {
-      img.setAttribute('src', srcset);
-    }
-  });
-
-  // get body width
-  const bodyWidth = document.body.getBoundingClientRect().width;
-  document.body.setAttribute('data-hlx-imp-body-width', bodyWidth);
+  // add element markers
+  addElementMarkers({ document });
 }
 
 /**
@@ -118,11 +126,13 @@ function reduceInstances(instances = []) {
     xpath,
     uuid,
     section,
+    nestedBlocks,
   }) => ({
     urlHash,
     xpath,
     uuid,
     section,
+    ...(nestedBlocks && { nestedBlocks }),
   }));
 }
 
