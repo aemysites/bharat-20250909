@@ -1,89 +1,78 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the cards wrapper (source block)
+  // Defensive: Find the cards wrapper
   const cardsWrapper = element.querySelector('.cards__wrapper');
   if (!cardsWrapper) return;
+  const cardsList = cardsWrapper.querySelector('.cards__list');
+  if (!cardsList) return;
 
-  // Find all card items
-  const cardItems = cardsWrapper.querySelectorAll('.cards__item');
-
-  // Header row as required
+  // Table header
   const headerRow = ['Cards (cards3)'];
   const rows = [headerRow];
 
-  // For each card, extract image/icon, title, description, CTA
-  cardItems.forEach((cardItem) => {
+  // Find all card items
+  const cardItems = Array.from(cardsList.querySelectorAll('.cards__item'));
+  cardItems.forEach(cardItem => {
+    // Defensive: Find the item wrapper
     const itemWrapper = cardItem.querySelector('.item-wrapper');
-    let imageEl = null;
-    // Find image link
+    if (!itemWrapper) return;
+
+    // --- Image/Icon cell ---
+    let imageCell = null;
     const imageLink = itemWrapper.querySelector('.item-image');
-    if (imageLink && imageLink.style.backgroundImage) {
-      // Extract image URL from background-image style
-      const bgUrlMatch = imageLink.style.backgroundImage.match(/url\(['"]?(.*?)['"]?\)/);
-      if (bgUrlMatch && bgUrlMatch[1]) {
-        imageEl = document.createElement('img');
-        imageEl.src = bgUrlMatch[1].trim();
-        imageEl.alt = imageLink.getAttribute('alt') || '';
+    if (imageLink) {
+      // Extract background-image url
+      const style = imageLink.getAttribute('style') || '';
+      const urlMatch = style.match(/background-image:\s*url\(['"]?([^'")]+)['"]?\)/);
+      if (urlMatch && urlMatch[1]) {
+        const img = document.createElement('img');
+        img.src = urlMatch[1].trim();
+        img.alt = imageLink.getAttribute('alt') || '';
+        imageCell = img;
       }
     }
 
-    // If no image, use a 1x1 transparent gif as a placeholder to ensure table structure
-    if (!imageEl) {
-      imageEl = document.createElement('img');
-      imageEl.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
-      imageEl.alt = '';
-      imageEl.width = 1;
-      imageEl.height = 1;
-      imageEl.style.opacity = '0';
-    }
-
-    // Card content
+    // --- Text cell ---
     const itemContent = itemWrapper.querySelector('.item-content');
-    let titleEl = null;
-    let descEl = null;
-    let ctaEl = null;
+    let textCellContent = [];
     if (itemContent) {
       // Title
       const title = itemContent.querySelector('.item-content__title');
       if (title) {
-        titleEl = document.createElement('strong');
-        titleEl.textContent = title.textContent.trim();
+        const h3 = document.createElement('h3');
+        h3.textContent = title.textContent.trim();
+        textCellContent.push(h3);
       }
       // Description
       const desc = itemContent.querySelector('.item-content__desc');
       if (desc) {
-        descEl = document.createElement('div');
-        descEl.textContent = desc.textContent.trim();
+        const p = document.createElement('p');
+        p.textContent = desc.textContent.trim();
+        textCellContent.push(p);
       }
-      // CTA
+      // CTA link
       const cta = itemContent.querySelector('.item-content__link');
       if (cta) {
-        ctaEl = document.createElement('a');
-        ctaEl.href = cta.href;
-        ctaEl.textContent = cta.textContent.trim();
+        // Use the existing link element
+        textCellContent.push(cta);
       }
     }
-
-    // Tag (optional, e.g., Featured, Coming Soon)
-    const tagEl = itemWrapper.querySelector('.tag');
-    let tagSpan = null;
-    if (tagEl) {
-      tagSpan = document.createElement('span');
-      tagSpan.textContent = tagEl.textContent.trim();
-      tagSpan.className = tagEl.className;
+    // Tag (e.g., Featured, Coming Soon)
+    const tag = itemWrapper.querySelector('.tag');
+    if (tag) {
+      const span = document.createElement('span');
+      span.textContent = tag.textContent.trim();
+      span.className = tag.className;
+      textCellContent.push(span);
     }
 
-    // Compose text cell
-    const textCellContent = [];
-    if (titleEl) textCellContent.push(titleEl);
-    if (tagSpan) textCellContent.push(document.createElement('br'), tagSpan);
-    if (descEl) textCellContent.push(document.createElement('br'), descEl);
-    if (ctaEl) textCellContent.push(document.createElement('br'), ctaEl);
-
-    rows.push([imageEl, textCellContent]);
+    // Defensive: If no image, leave cell empty
+    const row = [imageCell || '', textCellContent];
+    rows.push(row);
   });
 
-  // Always create the block (even if only header row)
+  // Create the block table
   const block = WebImporter.DOMUtils.createTable(rows, document);
+  // Replace the original cards wrapper with the block table
   cardsWrapper.replaceWith(block);
 }
