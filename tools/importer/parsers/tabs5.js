@@ -1,26 +1,23 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Always use the target block name as the header row
+  // Always use the block name as the header row
   const headerRow = ['Tabs (tabs5)'];
   const rows = [headerRow];
 
-  // Extract tab label from the .lcs_header a element
+  // Get tab label from header
+  const header = element.querySelector('.lcs_header');
   let tabLabel = '';
-  const headerDiv = element.querySelector('.lcs_header');
-  if (headerDiv) {
-    const tabBtn = headerDiv.querySelector('a');
-    if (tabBtn && tabBtn.textContent) {
-      tabLabel = tabBtn.textContent.trim();
-    }
+  if (header) {
+    const labelEl = header.querySelector('a');
+    tabLabel = labelEl ? labelEl.textContent.trim() : header.textContent.trim();
   }
 
-  // Extract tab content: in this HTML, there is no visible tab content, but per requirements, both columns are mandatory
-  // If there is no content, use a non-breaking space to avoid an unnecessary empty column
+  // Always provide two columns: label and content (even if content is empty)
   if (tabLabel) {
-    rows.push([tabLabel, '\u00A0']);
+    rows.push([tabLabel, '']); // Always two columns for tab row
   }
 
-  // Create and replace
-  const table = WebImporter.DOMUtils.createTable(rows, document);
-  element.replaceWith(table);
+  // Create table and replace element
+  const block = WebImporter.DOMUtils.createTable(rows, document);
+  element.replaceWith(block);
 }
