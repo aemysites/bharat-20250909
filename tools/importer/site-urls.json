@@ -19,7 +19,9 @@
     "keepHash": false,
     "strategy": "sitemaps",
     "logger": {},
-    "strategiesAttempted": ["SITEMAPS"]
+    "strategiesAttempted": [
+      "SITEMAPS"
+    ]
   },
   "extractionErrors": [],
   "errorCountMessage": "none",

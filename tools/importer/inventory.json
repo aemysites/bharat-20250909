@@ -1,0 +1,128 @@
+{
+  "fragments": [
+    {
+      "name": "nav",
+      "path": "/nav",
+      "totalBoxes": 1,
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/liverpool",
+          "urlHash": "f37ca4e199eebaef3e48239df281d2040945e46f",
+          "uuid": "f37ca4e1-00-cf00d50ba65a8f84d89557701ea89efb04cdef81",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]/div[1]"
+        }
+      ],
+      "styles": {
+        "height": 41
+      }
+    },
+    {
+      "name": "footer",
+      "path": "/footer",
+      "totalBoxes": 1,
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/liverpool",
+          "urlHash": "f37ca4e199eebaef3e48239df281d2040945e46f",
+          "uuid": "f37ca4e1-04-b336659d6a58b751a90a6f511c6b5bdd1f7d3464",
+          "xpath": "/html[1]/body[1]/div[4]"
+        }
+      ],
+      "styles": {
+        "background": "rgb(249, 249, 249) none repeat scroll 0% 0% / auto padding-box border-box"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "name": "header",
+      "cluster": 1,
+      "source": "Header",
+      "target": "Header (header1)",
+      "key": "header1",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/liverpool",
+          "urlHash": "f37ca4e199eebaef3e48239df281d2040945e46f",
+          "uuid": "f37ca4e1-00-cf00d50ba65a8f84d89557701ea89efb04cdef81",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "cluster": 2,
+      "source": "Search",
+      "target": "Search (search2)",
+      "key": "search2",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/liverpool",
+          "urlHash": "f37ca4e199eebaef3e48239df281d2040945e46f",
+          "uuid": "f37ca4e1-01-fddb26164dfb1d479320168e4dc58c4a86ac17b2",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Table (bordered)",
+      "cluster": 3,
+      "source": "Table (bordered)",
+      "target": "Table (bordered, tableBordered3)",
+      "key": "tableBordered3",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/liverpool",
+          "urlHash": "f37ca4e199eebaef3e48239df281d2040945e46f",
+          "uuid": "f37ca4e1-02-ee7a6796f533ca1a641266fa982b337f0ba6fbf3",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 4,
+      "source": "Columns block",
+      "target": "Columns block (columns4)",
+      "key": "columns4",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/liverpool",
+          "urlHash": "f37ca4e199eebaef3e48239df281d2040945e46f",
+          "uuid": "f37ca4e1-03-eeada7e2c794e3effab80f5211be7031543b87b1",
+          "xpath": "/html[1]/body[1]/div[2]/footer[1]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Tabs",
+      "cluster": 5,
+      "source": "Tabs",
+      "target": "Tabs (tabs5)",
+      "key": "tabs5",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/liverpool",
+          "urlHash": "f37ca4e199eebaef3e48239df281d2040945e46f",
+          "uuid": "f37ca4e1-04-b336659d6a58b751a90a6f511c6b5bdd1f7d3464",
+          "xpath": "/html[1]/body[1]/div[4]",
+          "section": "section-2"
+        }
+      ]
+    }
+  ],
+  "outliers": [],
+  "sections": [
+    {
+      "name": "section-1",
+      "background": "rgb(37, 34, 35) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 1
+    },
+    {
+      "name": "section-2",
+      "background": "rgb(249, 249, 249) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 1
+    }
+  ]
+}
