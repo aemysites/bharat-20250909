@@ -129,6 +129,13 @@
     {
       "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
       "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+      "uuid": "5b388e5b-05-6dc4d47169cbd2eab4a450b767c1e5dba2295a01",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[4]/div[1]",
+      "section": "section-2"
+    },
+    {
+      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+      "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
       "uuid": "5b388e5b-01-6166143f381f4703040dc6830751384b22113386",
       "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/span[1]"
     },
@@ -150,13 +157,6 @@
       "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
       "uuid": "5b388e5b-04-f4bfcce34632cd4b2f307ab1f5dc16a526d336a5",
       "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[3]"
-    },
-    {
-      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
-      "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-      "uuid": "5b388e5b-05-6dc4d47169cbd2eab4a450b767c1e5dba2295a01",
-      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[4]/div[1]",
-      "section": "section-2"
     },
     {
       "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
