@@ -6,14 +6,14 @@
       "totalBoxes": 1,
       "instances": [
         {
-          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
-          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
-          "uuid": "ac1c0cc8-00-cf00d50ba65a8f84d89557701ea89efb04cdef81",
-          "xpath": "/html[1]/body[1]/div[2]/header[1]/div[1]"
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+          "uuid": "5b388e5b-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
         }
       ],
       "styles": {
-        "height": 41
+        "height": 85
       }
     },
     {
@@ -22,9 +22,9 @@
       "totalBoxes": 1,
       "instances": [
         {
-          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
-          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
-          "uuid": "ac1c0cc8-04-b336659d6a58b751a90a6f511c6b5bdd1f7d3464",
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+          "uuid": "5b388e5b-12-b336659d6a58b751a90a6f511c6b5bdd1f7d3464",
           "xpath": "/html[1]/body[1]/div[4]"
         }
       ],
@@ -35,53 +35,6 @@
   ],
   "blocks": [
     {
-      "name": "Accordion",
-      "cluster": 3,
-      "source": "Accordion",
-      "target": "Accordion3 (accordion3)",
-      "key": "accordion3",
-      "instances": [
-        {
-          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
-          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
-          "uuid": "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0",
-          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[6]",
-          "nestedBlocks": [
-            "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0-embeds-1",
-            "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0-embeds-2",
-            "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0-embeds-3"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Embed (video)",
-      "cluster": 3,
-      "source": "Embed (video)",
-      "target": "Embed3 (embed3)",
-      "key": "embed3",
-      "instances": [
-        {
-          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
-          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
-          "uuid": "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0-embeds-1",
-          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[6]/div[1]/div[2]/div[1]/p[2]/iframe[1]"
-        },
-        {
-          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
-          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
-          "uuid": "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0-embeds-2",
-          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[6]/div[2]/div[2]/div[1]/p[3]/iframe[1]"
-        },
-        {
-          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
-          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
-          "uuid": "ac1c0cc8-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0-embeds-3",
-          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[6]/div[3]/div[2]/div[1]/p[3]/iframe[1]"
-        }
-      ]
-    },
-    {
       "name": "header",
       "cluster": 1,
       "source": "Header",
@@ -89,85 +42,150 @@
       "key": "header1",
       "instances": [
         {
-          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
-          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
-          "uuid": "ac1c0cc8-00-cf00d50ba65a8f84d89557701ea89efb04cdef81",
-          "xpath": "/html[1]/body[1]/div[2]/header[1]/div[1]"
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+          "uuid": "5b388e5b-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
         }
       ]
     },
     {
-      "name": "Search",
+      "name": "Accordion",
       "cluster": 2,
-      "source": "Search",
-      "target": "Search (search2)",
-      "key": "search2",
+      "source": "Accordion",
+      "target": "Accordion (accordion2)",
+      "key": "accordion2",
       "instances": [
         {
-          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
-          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
-          "uuid": "ac1c0cc8-01-fddb26164dfb1d479320168e4dc58c4a86ac17b2",
-          "xpath": "/html[1]/body[1]/div[2]/header[1]/div[2]"
-        }
-      ]
-    },
-    {
-      "name": "Cards",
-      "cluster": 3,
-      "source": "Cards",
-      "target": "Cards (cards3)",
-      "key": "cards3",
-      "instances": [
-        {
-          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
-          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
-          "uuid": "ac1c0cc8-02-ee7a6796f533ca1a641266fa982b337f0ba6fbf3",
-          "xpath": "/html[1]/body[1]/div[2]/main[1]"
-        }
-      ]
-    },
-    {
-      "name": "Columns",
-      "cluster": 4,
-      "source": "Columns block",
-      "target": "Columns block (columns4)",
-      "key": "columns4",
-      "instances": [
-        {
-          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
-          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
-          "uuid": "ac1c0cc8-03-eeada7e2c794e3effab80f5211be7031543b87b1",
-          "xpath": "/html[1]/body[1]/div[2]/footer[1]",
-          "section": "section-1"
-        }
-      ]
-    },
-    {
-      "name": "Tabs",
-      "cluster": 5,
-      "source": "Tabs",
-      "target": "Tabs (tabs5)",
-      "key": "tabs5",
-      "instances": [
-        {
-          "url": "https://library.westernsydney.edu.au/researchers/western_open_books",
-          "urlHash": "ac1c0cc8ddc4ff0616505bcb7c5a95899e995548",
-          "uuid": "ac1c0cc8-04-b336659d6a58b751a90a6f511c6b5bdd1f7d3464",
-          "xpath": "/html[1]/body[1]/div[4]",
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+          "uuid": "5b388e5b-06-24cc8ef715cbc245694ac5267c6aeefcd8425f3a",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[4]/div[2]",
           "section": "section-2"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 3,
+      "source": "Accordion",
+      "target": "Accordion (accordion3)",
+      "key": "accordion3",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+          "uuid": "5b388e5b-08-ca58f8fd3013b93e2a4b7d498bb7096a135955df",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[7]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 4,
+      "source": "Accordion",
+      "target": "Accordion (accordion4)",
+      "key": "accordion4",
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+          "uuid": "5b388e5b-10-eb1818e29802ea33218751123ba7ec881f9dffce",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[9]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "source": "Accordion",
+      "target": "Accordion (accordion7)",
+      "key": "accordion7",
+      "cluster": 7,
+      "instances": [
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+          "uuid": "5b388e5b-05-6dc4d47169cbd2eab4a450b767c1e5dba2295a01",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[4]/div[1]",
+          "nestedBlocks": [
+            "5b388e5b-04-6dc4d47169cbd2eab4a450b767c1e5dba2295a01-tables-1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "cluster": 5,
+      "source": "Table",
+      "target": "Table (table)",
+      "key": "table",
+      "boxes": [
+        {
+          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+          "uuid": "5b388e5b-04-6dc4d47169cbd2eab4a450b767c1e5dba2295a01-tables-1",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[4]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/table[1]"
         }
       ]
     }
   ],
-  "outliers": [],
+  "outliers": [
+    {
+      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+      "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+      "uuid": "5b388e5b-01-6166143f381f4703040dc6830751384b22113386",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/span[1]"
+    },
+    {
+      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+      "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+      "uuid": "5b388e5b-02-9ebc8c92a088f8dd03438d2844ab7ae6bbe03704",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+      "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+      "uuid": "5b388e5b-03-bb7bf0bd86579775d966f3326826772c2eec4543",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[2]"
+    },
+    {
+      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+      "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+      "uuid": "5b388e5b-04-f4bfcce34632cd4b2f307ab1f5dc16a526d336a5",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[3]"
+    },
+    {
+      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+      "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+      "uuid": "5b388e5b-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[6]"
+    },
+    {
+      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+      "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+      "uuid": "5b388e5b-09-fd94d229903845f4f37b51ffe516797b0c370ae2",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[8]"
+    }
+  ],
   "sections": [
     {
       "name": "section-1",
-      "background": "rgb(37, 34, 35) none repeat scroll 0% 0% / auto padding-box border-box",
+      "background": "rgb(137, 134, 135) none repeat scroll 0% 0% / auto padding-box border-box",
       "count": 1
     },
     {
       "name": "section-2",
+      "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 2
+    },
+    {
+      "name": "section-3",
+      "background": "rgb(37, 34, 35) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 1
+    },
+    {
+      "name": "section-4",
       "background": "rgb(249, 249, 249) none repeat scroll 0% 0% / auto padding-box border-box",
       "count": 1
     }
