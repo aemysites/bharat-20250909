@@ -7,7 +7,7 @@
       "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
       "source": "SITEMAPS",
       "targetPath": "/about-us/campus/locations/liverpool",
-      "id": "f37ca4e199eebaef3e48239df281d2040945e46f"
+      "id": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1"
     }
   ],
   "crawlOptions": {
@@ -19,9 +19,7 @@
     "keepHash": false,
     "strategy": "sitemaps",
     "logger": {},
-    "strategiesAttempted": [
-      "SITEMAPS"
-    ]
+    "strategiesAttempted": ["SITEMAPS"]
   },
   "extractionErrors": [],
   "errorCountMessage": "none",
