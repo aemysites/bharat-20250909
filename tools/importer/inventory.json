@@ -143,7 +143,7 @@
       ]
     },
     {
-      "name": "table",
+      "name": "Table",
       "cluster": 5,
       "source": "Table",
       "target": "Table (table)",
