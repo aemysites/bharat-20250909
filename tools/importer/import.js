@@ -11,12 +11,11 @@
  */
 /* global WebImporter */
 /* eslint-disable no-console */
-import columns4Parser from './parsers/columns4.js';
-import search2Parser from './parsers/search2.js';
-import embed3Parser from './parsers/embed3.js';
+import accordion2Parser from './parsers/accordion2.js';
+import accordion4Parser from './parsers/accordion4.js';
 import accordion3Parser from './parsers/accordion3.js';
-import tabs5Parser from './parsers/tabs5.js';
-import cards3Parser from './parsers/cards3.js';
+import accordion7Parser from './parsers/accordion7.js';
+import tableParser from './parsers/table.js';
 import headerParser from './parsers/header.js';
 import metadataParser from './parsers/metadata.js';
 import cleanupTransformer from './transformers/cleanup.js';
@@ -33,12 +32,11 @@ import {
 
 const parsers = {
   metadata: metadataParser,
-  columns4: columns4Parser,
-  search2: search2Parser,
-  embed3: embed3Parser,
+  accordion2: accordion2Parser,
+  accordion4: accordion4Parser,
   accordion3: accordion3Parser,
-  tabs5: tabs5Parser,
-  cards3: cards3Parser,
+  accordion7: accordion7Parser,
+  table: tableParser,
   ...customParsers,
 };
 

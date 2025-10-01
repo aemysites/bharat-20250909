@@ -114,12 +114,12 @@
       ]
     },
     {
-      "name": "table",
+      "name": "Table",
       "cluster": 5,
       "source": "Table",
       "target": "Table (table)",
       "key": "table",
-      "boxes": [
+      "instances": [
         {
           "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
           "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",

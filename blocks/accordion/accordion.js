@@ -10,9 +10,9 @@ export default async function decorate(block) {
   console.log('=== ACCORDION DECORATE CALLED ===');
   console.log('Block:', block);
   
-  // First, try to find the accordion3 container
-  const accordion3Container = document.querySelector('.accordion3-container, [data-block="accordion3"], .accordion3');
-  console.log('Found accordion3 container:', accordion3Container);
+  // First, try to find the accordion container
+  const accordion3Container = document.querySelector('.accordion-container, .accordion3-container, [data-block="accordion3"], .accordion3');
+  console.log('Found accordion container:', accordion3Container);
   
   if (accordion3Container) {
     console.log('Processing accordion3 container with all children');
@@ -65,35 +65,46 @@ export default async function decorate(block) {
         
         summary.textContent = title;
         
-        // Create accordion body with child content
-        const body = document.createElement('div');
-        body.className = 'accordion-item-body';
-        
-        // Move the child (don't clone) - this removes it from original location
-        body.appendChild(child);
-        
-        // Check if the child is a block that needs its JS loaded
+        // Check if the child is a block that needs its JS loaded BEFORE moving it
         const blockElement = child.querySelector('[data-block-name]');
         if (blockElement) {
           const blockName = blockElement.getAttribute('data-block-name');
-          console.log(`Loading block JS for: ${blockName}`);
+          console.log(`Loading block JS for: ${blockName} BEFORE moving to accordion`);
           
-          // Load the block's JavaScript
+          // Load the block's JavaScript first
           try {
             const blockModule = await import(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.js`);
             if (blockModule.default) {
               await blockModule.default(blockElement);
               console.log(`Successfully loaded and executed ${blockName} block`);
+              console.log('Table structure after table.js:', blockElement.innerHTML);
+              
+              // Mark the block as loaded to prevent AEM from re-processing it
+              blockElement.setAttribute('data-block-status', 'loaded');
             }
           } catch (error) {
             console.warn(`Failed to load block ${blockName}:`, error);
           }
         }
         
+        // Create accordion body with child content
+        const body = document.createElement('div');
+        body.className = 'accordion-item-body';
+        
+        // Move the child (don't clone) - this removes it from original location
+        console.log('Table structure before moving to accordion:', child.innerHTML);
+        body.appendChild(child);
+        console.log('Table structure after moving to accordion:', child.innerHTML);
+        
         // Assemble accordion item
         details.appendChild(summary);
         details.appendChild(body);
         block.appendChild(details);
+        
+        // Check table structure after accordion is fully assembled
+        setTimeout(() => {
+          console.log('Table structure after accordion assembly:', child.innerHTML);
+        }, 100);
         
         console.log(`Created accordion item: "${title}"`);
       }

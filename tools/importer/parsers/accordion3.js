@@ -1,40 +1,38 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Step 1: Create Section Metadata table for parent block with <thead> and <tbody>
-  const table = document.createElement('table');
+  // Header row for block table
+  const headerRow = ['Accordion (accordion3)'];
 
-  // Create thead with one column
-  const thead = document.createElement('thead');
-  const headerRow = document.createElement('tr');
-  const headerCell = document.createElement('th');
-  headerCell.textContent = 'Section Metadata';
-  headerRow.appendChild(headerCell);
-  thead.appendChild(headerRow);
+  // Each immediate child .card of the accordion is an accordion item
+  const cards = Array.from(element.querySelectorAll(':scope > .card'));
+  const rows = [headerRow];
 
-  // Create tbody with block metadata row
-  const tbody = document.createElement('tbody');
-  const blockRow = document.createElement('tr');
-  const blockCell = document.createElement('td');
-  blockCell.textContent = 'block';
-  const typeCell = document.createElement('td');
-  typeCell.textContent = 'accordion3';
-  blockRow.appendChild(blockCell);
-  blockRow.appendChild(typeCell);
-  tbody.appendChild(blockRow);
+  cards.forEach((card) => {
+    // Title: get the .card-header
+    const header = card.querySelector('.card-header');
+    let titleElem = null;
+    if (header) {
+      // Use h2 if present, else header itself
+      const h2 = header.querySelector('h2');
+      titleElem = h2 ? h2 : header;
+    }
 
-  table.appendChild(thead);
-  table.appendChild(tbody);
+    // Content: get the .card-body inside the collapse div
+    let contentElem = null;
+    const collapse = card.querySelector('.collapse');
+    if (collapse) {
+      const body = collapse.querySelector('.card-body');
+      contentElem = body || collapse;
+    }
 
-  // Step 2: Create an empty content section (for child accordion item blocks)
-  const contentSection = document.createElement('div');
-  contentSection.className = 'parent-block-content';
-  // Insert a comment to mark where child accordion blocks will be placed
-  contentSection.appendChild(document.createComment('Child accordion item blocks will be inserted here'));
+    // Defensive fallback: if no card-header or card-body
+    rows.push([
+      titleElem || document.createTextNode(''),
+      contentElem || document.createTextNode(''),
+    ]);
+  });
 
-  // Step 3: Create section breaks (hr)
-  const hrStart = document.createElement('hr');
-  const hrEnd = document.createElement('hr');
-
-  // Step 4: Replace the original element with the new section structure
-  element.replaceWith(hrStart, contentSection, table, hrEnd);
+  // Create table block
+  const block = WebImporter.DOMUtils.createTable(rows, document);
+  element.replaceWith(block);
 }
