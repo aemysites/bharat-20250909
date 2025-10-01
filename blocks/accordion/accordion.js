@@ -20,7 +20,8 @@ export default async function decorate(block) {
     // Find all direct children of the accordion3 container (excluding the accordion block itself)
     const children = Array.from(accordion3Container.children).filter(child => 
       !child.classList.contains('accordion') && 
-      !child.classList.contains('accordion-wrapper')
+      !child.classList.contains('accordion-wrapper') &&
+      !child.classList.contains('default-content-wrapper')
     );
     console.log(`Found ${children.length} children to process`);
     
