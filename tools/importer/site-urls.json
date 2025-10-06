@@ -1,12 +1,12 @@
 {
-  "originUrl": "https://www.nrma.com.au/home-loans",
+  "originUrl": "https://www.marutisuzuki.com",
   "aborted": false,
-  "lastCrawled": "https://www.nrma.com.au/home-loans/calculators",
+  "lastCrawled": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
   "urls": [
     {
-      "url": "https://www.nrma.com.au/home-loans/calculators",
+      "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
       "source": "SITEMAPS",
-      "targetPath": "/calculators",
+      "targetPath": "/more-from-us/maruti-suzuki-leasing",
       "id": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1"
     }
   ],
