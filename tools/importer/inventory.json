@@ -6,14 +6,14 @@
       "totalBoxes": 1,
       "instances": [
         {
-          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+          "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
           "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
           "uuid": "5b388e5b-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
           "xpath": "/html[1]/body[1]/div[2]/header[1]"
         }
       ],
       "styles": {
-        "height": 85
+        "height": 80
       }
     },
     {
@@ -22,201 +22,141 @@
       "totalBoxes": 1,
       "instances": [
         {
-          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+          "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
           "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-          "uuid": "5b388e5b-12-b336659d6a58b751a90a6f511c6b5bdd1f7d3464",
-          "xpath": "/html[1]/body[1]/div[4]"
+          "uuid": "5b388e5b-11-a41b86b8b3ddc003fd5e84cf0c89375fa91d347e",
+          "xpath": "/html[1]/body[1]/div[2]/div[3]/div[6]"
         }
       ],
       "styles": {
-        "background": "rgb(249, 249, 249) none repeat scroll 0% 0% / auto padding-box border-box"
+        "background": "rgb(0, 93, 174) none repeat scroll 0% 0% / auto padding-box border-box"
       }
     }
   ],
   "blocks": [
     {
-      "name": "header",
-      "cluster": 1,
-      "source": "Header",
-      "target": "Header (header1)",
-      "key": "header1",
-      "instances": [
-        {
-          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
-          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-          "uuid": "5b388e5b-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
-          "xpath": "/html[1]/body[1]/div[2]/header[1]"
-        }
-      ]
-    },
-    {
-      "name": "Accordion",
-      "cluster": 2,
-      "source": "Accordion",
-      "target": "Accordion (accordion2)",
-      "key": "accordion2",
-      "instances": [
-        {
-          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
-          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-          "uuid": "5b388e5b-06-24cc8ef715cbc245694ac5267c6aeefcd8425f3a",
-          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[4]/div[2]",
-          "section": "section-2"
-        }
-      ]
-    },
-    {
-      "name": "Accordion",
-      "cluster": 3,
-      "source": "Accordion",
-      "target": "Accordion (accordion3)",
-      "key": "accordion3",
-      "instances": [
-        {
-          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
-          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-          "uuid": "5b388e5b-08-ca58f8fd3013b93e2a4b7d498bb7096a135955df",
-          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[7]"
-        }
-      ]
-    },
-    {
-      "name": "Accordion",
-      "cluster": 4,
-      "source": "Accordion",
-      "target": "Accordion (accordion4)",
-      "key": "accordion4",
-      "instances": [
-        {
-          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
-          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-          "uuid": "5b388e5b-10-eb1818e29802ea33218751123ba7ec881f9dffce",
-          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[9]"
-        }
-      ]
-    },
-    {
       "name": "Columns",
-      "cluster": 5,
+      "cluster": 3,
       "source": "Columns block",
-      "target": "Columns block (columns5)",
-      "key": "columns5",
+      "target": "Columns block (columns3)",
+      "key": "columns3",
       "instances": [
         {
-          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+          "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
           "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-          "uuid": "5b388e5b-11-eeada7e2c794e3effab80f5211be7031543b87b1",
-          "xpath": "/html[1]/body[1]/div[2]/footer[1]",
-          "section": "section-3"
-        }
-      ]
-    },
-    {
-      "name": "unknown",
-      "cluster": 6,
-      "instances": [
-        {
-          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
-          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-          "uuid": "5b388e5b-12-b336659d6a58b751a90a6f511c6b5bdd1f7d3464",
-          "xpath": "/html[1]/body[1]/div[4]",
-          "section": "section-4"
-        }
-      ]
-    },
-    {
-      "name": "Accordion",
-      "source": "Accordion",
-      "target": "Accordion (accordion7)",
-      "key": "accordion7",
-      "cluster": 7,
-      "instances": [
-        {
-          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
-          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-          "uuid": "5b388e5b-05-6dc4d47169cbd2eab4a450b767c1e5dba2295a01",
-          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[4]/div[1]",
+          "uuid": "5b388e5b-06-fa250c3286d7156365ffc6d2e61de11cceebd6a2",
+          "xpath": "/html[1]/body[1]/div[2]/div[3]/div[4]",
           "nestedBlocks": [
-            "5b388e5b-04-6dc4d47169cbd2eab4a450b767c1e5dba2295a01-tables-1"
+            "5b388e5b-06-fa250c3286d7156365ffc6d2e61de11cceebd6a2-column1-image",
+            "5b388e5b-06-fa250c3286d7156365ffc6d2e61de11cceebd6a2-column2-carousel"
           ]
         }
       ]
     },
     {
-      "name": "Table",
-      "cluster": 5,
-      "source": "Table",
-      "target": "Table (table)",
-      "key": "table",
-      "boxes": [
+      "name": "Image",
+      "cluster": "3-column1",
+      "source": "Image",
+      "target": "Image (image)",
+      "key": "image",
+      "instances": [
         {
-          "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+          "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
           "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-          "uuid": "5b388e5b-04-6dc4d47169cbd2eab4a450b767c1e5dba2295a01-tables-1",
-          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[4]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/table[1]"
+          "uuid": "5b388e5b-06-fa250c3286d7156365ffc6d2e61de11cceebd6a2-column1-image",
+          "xpath": "/html[1]/body[1]/div[2]/div[3]/div[4]/div[1]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "Carousel",
+      "cluster": "3-column2",
+      "source": "Carousel",
+      "target": "Carousel (carousel)",
+      "key": "carousel",
+      "instances": [
+        {
+          "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
+          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+          "uuid": "5b388e5b-06-fa250c3286d7156365ffc6d2e61de11cceebd6a2-column2-carousel",
+          "xpath": "/html[1]/body[1]/div[2]/div[3]/div[4]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Testimonials",
+      "cluster": 4,
+      "source": "Testimonials",
+      "target": "Testimonials (testimonials4)",
+      "key": "testimonials4",
+      "instances": [
+        {
+          "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
+          "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+          "uuid": "5b388e5b-09-760334284ef1277a17a73775ebb26d447fda280d",
+          "xpath": "/html[1]/body[1]/div[2]/div[3]/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[2]/div[1]/div[1]"
         }
       ]
     }
   ],
   "outliers": [
     {
-      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+      "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
       "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-      "uuid": "5b388e5b-01-6166143f381f4703040dc6830751384b22113386",
-      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/span[1]"
-    },
-    {
-      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
-      "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-      "uuid": "5b388e5b-02-9ebc8c92a088f8dd03438d2844ab7ae6bbe03704",
-      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[1]",
+      "uuid": "5b388e5b-01-d56188ed7ea44a5e20bb3014bd5e44a3fb988093",
+      "xpath": "/html[1]/body[1]/div[2]/div[3]/div[2]",
       "section": "section-1"
     },
     {
-      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+      "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
       "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-      "uuid": "5b388e5b-03-bb7bf0bd86579775d966f3326826772c2eec4543",
-      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[2]"
+      "uuid": "5b388e5b-02-b50e820cd8dbfe590130f4b0c1215cc26d4c3f21",
+      "xpath": "/html[1]/body[1]/div[2]/div[3]/div[3]/div[1]/h1[1]",
+      "section": "section-2"
     },
     {
-      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+      "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
       "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-      "uuid": "5b388e5b-04-f4bfcce34632cd4b2f307ab1f5dc16a526d336a5",
-      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[3]"
+      "uuid": "5b388e5b-03-560de46cc266ded6d22af2c62196ba0e4db41cd4",
+      "xpath": "/html[1]/body[1]/div[2]/div[3]/div[3]/div[1]/p[1]",
+      "section": "section-2"
     },
     {
-      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+      "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
       "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-      "uuid": "5b388e5b-07-ea3dc9e8be4cdba05a10f4d93b76524b4c10bae0",
-      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[6]"
+      "uuid": "5b388e5b-04-215294ccce86d3905c32b816542f19ab169cad3c",
+      "xpath": "/html[1]/body[1]/div[2]/div[3]/div[3]/div[1]/h3[1]",
+      "section": "section-2"
     },
     {
-      "url": "https://library.westernsydney.edu.au/about_us/campus/locations/indonesia-surabaya",
+      "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
       "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
-      "uuid": "5b388e5b-09-fd94d229903845f4f37b51ffe516797b0c370ae2",
-      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]/div[8]"
+      "uuid": "5b388e5b-07-8cff8ea5baa024517d2d642b3bb9c0b3bcf4b28d",
+      "xpath": "/html[1]/body[1]/div[2]/div[3]/div[5]/div[1]/div[1]/div[1]/div[1]"
+    },
+    {
+      "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
+      "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+      "uuid": "5b388e5b-08-e7e89c9845c21318af3121fcc774f16774273129",
+      "xpath": "/html[1]/body[1]/div[2]/div[3]/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[2]/div[1]/p[1]"
+    },
+    {
+      "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
+      "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
+      "uuid": "5b388e5b-10-ea3d541e1224e3ba1d3a4837a17947e2c717b168",
+      "xpath": "/html[1]/body[1]/div[2]/div[3]/div[5]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]"
     }
   ],
   "sections": [
     {
       "name": "section-1",
-      "background": "rgb(137, 134, 135) none repeat scroll 0% 0% / auto padding-box border-box",
+      "background": "rgba(0, 0, 0, 0) url(\"https://www.marutisuzuki.com/assets/maruti-suzuki-leasing/images/videoSectionBanner.jpg\") no-repeat scroll 0% 0% / cover padding-box border-box",
       "count": 1
     },
     {
       "name": "section-2",
-      "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
-      "count": 2
-    },
-    {
-      "name": "section-3",
-      "background": "rgb(37, 34, 35) none repeat scroll 0% 0% / auto padding-box border-box",
-      "count": 1
-    },
-    {
-      "name": "section-4",
-      "background": "rgb(249, 249, 249) none repeat scroll 0% 0% / auto padding-box border-box",
-      "count": 1
+      "background": "rgb(0, 93, 174) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 5
     }
   ]
 }
