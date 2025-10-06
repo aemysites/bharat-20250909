@@ -45,7 +45,7 @@
           "url": "https://www.marutisuzuki.com/more-from-us/maruti-suzuki-leasing",
           "urlHash": "5b388e5ba6ff3b29e2e19fdbaaec761d47033cd1",
           "uuid": "5b388e5b-06-fa250c3286d7156365ffc6d2e61de11cceebd6a2",
-          "xpath": "/html[1]/body[1]/div[2]/div[3]/div[4]",
+          "xpath": "/html[1]/body[1]/div[2]/div[3]/div[4]/div[1]",
           "nestedBlocks": [
             "5b388e5b-06-fa250c3286d7156365ffc6d2e61de11cceebd6a2-column1-image",
             "5b388e5b-06-fa250c3286d7156365ffc6d2e61de11cceebd6a2-column2-carousel"
