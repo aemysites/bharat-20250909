@@ -1,0 +1,28 @@
+{
+  "name": "excatop-agentic-tools",
+  "version": "1.0.1",
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "excatop-tools": "./cli.js"
+  },
+  "scripts": {
+    "convert-html": "node cli.js convert-html",
+    "generate-asset-list": "node cli.js generate-asset-list",
+    "upload-da": "node cli.js upload-da",
+    "fix-tables": "node cli.js fix-tables",
+    "process-urls": "node cli.js process-urls",
+    "help": "node cli.js help"
+  },
+  "dependencies": {
+    "@adobe/aem-import-helper": "^1.2.2",
+    "@adobe/helix-html-pipeline": "^6.27.0",
+    "@adobe/helix-importer-jcr-packaging": "^2.0.12",
+    "dotenv": "17.2.2",
+    "hast-util-to-html": "^9.0.0",
+    "sharp": "^0.33.0",
+    "zod": "^3.23.8"
+  }
+}
+
