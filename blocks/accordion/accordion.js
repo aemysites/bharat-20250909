@@ -27,95 +27,116 @@ function readMetadata(metadataBlock) {
 }
 
 /**
- * Handle nested blocks by finding metadata blocks and injecting content into accordion items
+ * Handle nested blocks using section-based approach
+ * Finds all accordion blocks in the same section and nests child accordions into parent
  * @param {Element} block - The accordion block element
  */
-function handleNestedBlocks(block) {
+async function handleNestedBlocks(block) {
+  // eslint-disable-next-line no-console
+  console.log('=== handleNestedBlocks called ===');
+  console.log('Block:', block);
+
   // Find the section containing this accordion
   const accordionSection = block.closest('.section');
-  if (!accordionSection) return;
-
-  // Get all accordion items from this block
-  const accordionItems = block.querySelectorAll('.accordion-item');
-
-  // CASE 1: Check if metadata and embed are in the SAME section (siblings)
-  const metadataInSameSection = accordionSection.querySelector('.metadata');
-  if (metadataInSameSection) {
-    // Read metadata
-    const metadata = readMetadata(metadataInSameSection);
-
-    // Check if this metadata points to our accordion
-    if (metadata.parent === 'accordion' && metadata['accordion-item'] !== undefined) {
-      const itemIndex = parseInt(metadata['accordion-item'], 10);
-
-      // Find the corresponding accordion item
-      const targetAccordionItem = accordionItems[itemIndex];
-      if (targetAccordionItem) {
-        // Find the accordion body to append content to
-        const accordionBody = targetAccordionItem.querySelector('.accordion-item-body');
-        if (accordionBody) {
-          // Find embed/video blocks in the same section (siblings of accordion)
-          const embedBlocks = accordionSection.querySelectorAll('.embed, .video');
-          embedBlocks.forEach((embedBlock) => {
-            accordionBody.appendChild(embedBlock);
-          });
-        }
-      }
-    }
-    // After handling same-section blocks, we're done
+  if (!accordionSection) {
+    // eslint-disable-next-line no-console
+    console.warn('No section found for accordion');
     return;
   }
 
-  // CASE 2: Look for metadata in subsequent sections (Strategy E pattern)
-  const main = accordionSection.closest('main');
-  if (!main) return;
+  // eslint-disable-next-line no-console
+  console.log('Section:', accordionSection);
 
-  const allSections = Array.from(main.querySelectorAll('.section'));
-  const accordionIndex = allSections.indexOf(accordionSection);
+  // Check if this section has accordion-container class (indicates nested structure)
+  if (!accordionSection.classList.contains('accordion-container')) {
+    // eslint-disable-next-line no-console
+    console.log('Not an accordion-container section, skipping nested logic');
+    return;
+  }
 
-  // Look at sections after the accordion
-  for (let i = accordionIndex + 1; i < allSections.length; i++) {
-    const section = allSections[i];
+  // Find all accordion blocks in this section
+  const allAccordionBlocks = Array.from(accordionSection.querySelectorAll('.accordion.block'));
+  // eslint-disable-next-line no-console
+  console.log(`Found ${allAccordionBlocks.length} accordion blocks in section`);
 
-    // Check if this section has a metadata block
-    const metadataBlock = section.querySelector('.metadata');
-    if (!metadataBlock) continue;
+  if (allAccordionBlocks.length < 2) {
+    // eslint-disable-next-line no-console
+    console.log('Less than 2 accordions, no nesting needed');
+    return;
+  }
 
+  // First accordion is the parent, rest are children
+  const parentAccordion = allAccordionBlocks[0];
+  const childAccordions = allAccordionBlocks.slice(1);
+
+  // eslint-disable-next-line no-console
+  console.log('Parent accordion:', parentAccordion);
+  console.log('Child accordions:', childAccordions);
+
+  // Look for metadata to determine target item index, default to 0
+  let itemIndex = 0;
+  const metadataBlock = accordionSection.querySelector('.metadata');
+  if (metadataBlock) {
+    // Hide the metadata block from display
+    metadataBlock.style.display = 'none';
+    
     // Read metadata
     const metadata = readMetadata(metadataBlock);
+    // eslint-disable-next-line no-console
+    console.log('Metadata found:', metadata);
 
-    // Check if this section's metadata points to our accordion
-    if (metadata.parent === 'accordion' && metadata['accordion-item'] !== undefined) {
-      const itemIndex = parseInt(metadata['accordion-item'], 10);
-
-      // Find the corresponding accordion item
-      const targetAccordionItem = accordionItems[itemIndex];
-      if (!targetAccordionItem) continue;
-
-      // Find the accordion body to append content to
-      const accordionBody = targetAccordionItem.querySelector('.accordion-item-body');
-      if (!accordionBody) continue;
-
-      // Find all blocks in this section (excluding metadata block)
-      const blocks = Array.from(section.children).filter((child) => {
-        return !child.classList.contains('metadata')
-          && (child.classList.contains('embed')
-            || child.classList.contains('video')
-            || child.tagName === 'DIV');
-      });
-
-      // Append each block to the accordion body
-      blocks.forEach((blockToMove) => {
-        accordionBody.appendChild(blockToMove);
-      });
-
-      // Hide the now-empty section
-      section.style.display = 'none';
+    if (metadata['accordion-item'] !== undefined) {
+      itemIndex = parseInt(metadata['accordion-item'], 10);
     }
+  } else {
+    // eslint-disable-next-line no-console
+    console.log('No metadata found, using default item index 0');
+  }
+
+  // Get the parent accordion's items
+  const parentItems = parentAccordion.querySelectorAll('.accordion-item');
+  // eslint-disable-next-line no-console
+  console.log(`Parent has ${parentItems.length} items, targeting item index ${itemIndex}`);
+
+  if (parentItems[itemIndex]) {
+    const targetBody = parentItems[itemIndex].querySelector('.accordion-item-body');
+    
+    if (targetBody) {
+      // eslint-disable-next-line no-console
+      console.log('Target body found, moving child accordions...');
+
+      // Move all child accordions into the parent's body
+      childAccordions.forEach((childAccordion, idx) => {
+        // eslint-disable-next-line no-console
+        console.log(`Moving child accordion ${idx + 1} into parent item ${itemIndex}`);
+        
+        // Clear any existing content in the target body (like placeholder text)
+        if (idx === 0) {
+          targetBody.innerHTML = '';
+        }
+        
+        // Move the entire child accordion block into the parent's body
+        targetBody.appendChild(childAccordion);
+      });
+
+      // eslint-disable-next-line no-console
+      console.log('✅ Successfully nested child accordions into parent');
+    } else {
+      // eslint-disable-next-line no-console
+      console.warn('Target accordion body not found');
+    }
+  } else {
+    // eslint-disable-next-line no-console
+    console.warn(`Parent accordion item at index ${itemIndex} not found`);
   }
 }
 
-export default function decorate(block) {
+export default async function decorate(block) {
+  // eslint-disable-next-line no-console
+  console.log('=== Accordion decorate called ===');
+  console.log('Block:', block);
+
+  // First, decorate this accordion's structure
   [...block.children].forEach((row) => {
     // decorate accordion item label
     const label = row.children[0];
@@ -133,36 +154,29 @@ export default function decorate(block) {
     row.replaceWith(details);
   });
 
-  // Handle nested blocks after accordion is decorated
-  handleNestedBlocks(block);
-  
-  // NEW: Handle embed blocks in the same section (accordion-container with embed-container)
-  const accordionSection = block.closest('.section');
-  if (accordionSection && accordionSection.classList.contains('embed-container')) {
-    // Hide metadata blocks (they shouldn't be visible)
-    const metadataBlocks = accordionSection.querySelectorAll('.metadata');
-    metadataBlocks.forEach((metadata) => {
-      metadata.style.display = 'none';
-    });
+  // Check if we're in an accordion-container section
+  const section = block.closest('.section');
+  if (section && section.classList.contains('accordion-container')) {
+    // Mark this block as processed
+    block.setAttribute('data-nested-processed', 'true');
     
-    // Find all embed blocks that are siblings (at section level)
-    const embedWrappers = accordionSection.querySelectorAll(':scope > .embed-wrapper');
+    // eslint-disable-next-line no-console
+    console.log('In accordion-container section');
+
+    // Check if this is the first accordion (parent)
+    const allAccordions = Array.from(section.querySelectorAll('.accordion.block'));
+    const isFirstAccordion = allAccordions[0] === block;
     
-    if (embedWrappers.length > 0) {
-      // Get the first (or last, depending on your preference) accordion item
-      const accordionItems = block.querySelectorAll('.accordion-item');
-      const lastAccordionItem = accordionItems[accordionItems.length - 1];
-      
-      if (lastAccordionItem) {
-        const accordionBody = lastAccordionItem.querySelector('.accordion-item-body');
-        
-        if (accordionBody) {
-          // Move all embed blocks into the last accordion item
-          embedWrappers.forEach((embedWrapper) => {
-            accordionBody.appendChild(embedWrapper);
-          });
-        }
-      }
+    // eslint-disable-next-line no-console
+    console.log(`This is ${isFirstAccordion ? 'PARENT' : 'CHILD'} accordion`);
+    console.log(`Total accordions in section: ${allAccordions.length}`);
+
+    // Only the first (parent) accordion should trigger the nesting logic
+    if (isFirstAccordion) {
+      // Wait a bit for other accordions to be decorated
+      setTimeout(() => {
+        handleNestedBlocks(block);
+      }, 100);
     }
   }
 }

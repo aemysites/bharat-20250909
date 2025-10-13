@@ -59,3 +59,21 @@
   border-top: 1px solid #dadada;
   background-color: var(--background-color);
 }
+
+/* Hide metadata blocks used for nested block configuration */
+.section .metadata {
+  display: none !important;
+}
+
+/* Nested accordion styling */
+.accordion-item-body .accordion {
+  margin-top: 16px;
+}
+
+.accordion-item-body .accordion details {
+  border: 1px solid #e5e5e5;
+}
+
+.accordion-item-body .accordion details + details {
+  margin-top: 8px;
+}

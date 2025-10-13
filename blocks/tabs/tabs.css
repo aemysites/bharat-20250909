@@ -125,3 +125,8 @@
     height: 80px;
   }
 }
+
+/* Hide metadata blocks used for nested block configuration */
+.section.tabs-container .metadata {
+  display: none !important;
+}
